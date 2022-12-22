@@ -23,7 +23,48 @@
   </head>
   <body>
     <header>
-      <nav></nav>
+      <div class="nav">
+      <nav class="nav-container">
+        <a class="nav-container-link">home</a>
+        <a class="nav-container-link">products</a>
+        <a class="nav-container-link">contact</a>
+        <a class="nav-container-link" class="redirect" href="">cart</a>
+        <button id="basketCount">0</button>
+        <!-- bs offcanvas cart-->
+        <button
+          class="button-offcanvas"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasRight"
+          aria-controls="offcanvasRight"
+        >
+        <img alt="cart" />
+        </button>
+      </nav>
+    </div>
+      <div
+        class="offcanvas offcanvas-end"
+        tabindex="-1"
+        id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel"
+      >
+        <div class="offcanvas-header">
+          <h4 id="offcanvasRightLabel">CART</h4>
+          <button
+            type="button"
+            class="btn-close text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="overflow-auto">
+          <div id="shopping-basket-offcanvas"></div>
+          <div class="offcanvas-body">
+            <a class="redirect">
+
+              <!-- Create canvas body html with typescript-->
+              <button class="purchase-button-offcanvas">CHECKOUT</button>
+            </a>
+          </div>
     </header>
     <main>
       <p>sortera</p>
