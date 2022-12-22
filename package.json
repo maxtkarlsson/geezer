@@ -4,5 +4,8 @@
     "@parcel/validator-typescript": "^2.8.2",
     "parcel": "^2.8.2",
     "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "bootstrap":"5.2.3"
   }
 }
