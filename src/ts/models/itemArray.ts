@@ -2,7 +2,7 @@ import { Item } from "./item";
 
 export let products: Item[] = [
   new Item(
-    1001,
+    "1001",
     "Mona Jesper",
     "url",
     "Description text",
@@ -13,7 +13,7 @@ export let products: Item[] = [
     "Add"
   ),
   new Item(
-    1003,
+    "1003",
     "Girl on a cliff",
     "url",
     "Description text",
@@ -24,7 +24,7 @@ export let products: Item[] = [
     "Add"
   ),
   new Item(
-    1004,
+    "1004",
     "Gunnar painting",
     "url",
     "Description text",
@@ -35,7 +35,7 @@ export let products: Item[] = [
     "Add"
   ),
   new Item(
-    1005,
+    "1005",
     "Routsalainen päivänkulla",
     "url",
     "Description text",
@@ -46,7 +46,7 @@ export let products: Item[] = [
     "Add"
   ),
   new Item(
-    1006,
+    "1006",
     "Brexit",
     "url",
     "Description text",
@@ -57,7 +57,7 @@ export let products: Item[] = [
     "Add"
   ),
   new Item(
-    1007,
+    "1007",
     "Boris Johansson",
     "url",
     "Description text",
@@ -68,7 +68,7 @@ export let products: Item[] = [
     "Add"
   ),
   new Item(
-    1008,
+    "1008",
     "Fäsh n Cräsp",
     "url",
     "Description text",
@@ -79,7 +79,7 @@ export let products: Item[] = [
     "Add"
   ),
   new Item(
-    1009,
+    "1009",
     "Banan på ett träd",
     "url",
     "Description text",
@@ -90,7 +90,7 @@ export let products: Item[] = [
     "Add"
   ),
   new Item(
-    1010,
+    "1010",
     "Yxskaft på en kudde",
     "url",
     "Description text",
