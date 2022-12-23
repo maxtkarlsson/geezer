@@ -1,6 +1,8 @@
 import { Item } from "./item";
+import { products } from "./itemArray";
 
-class ShoppingCart {
+
+export class ShoppingCart {
   quantity: Number;
   itemList: Item[];
   constructor(quantity: Number, itemList: Item[]) {
@@ -8,3 +10,15 @@ class ShoppingCart {
     this.itemList = itemList;
   }
 }
+
+/*
+export class ShoppingCart {
+  quantity: Number;
+  cartItem: Item;
+  constructor(quantity: Number, cartItem:Item) {
+    this.quantity = quantity;
+    this.cartItem = cartItem;
+  }
+}*/
+
+

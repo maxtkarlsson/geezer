@@ -1,6 +1,7 @@
 import { Item } from "./models/item";
 import { products } from "./models/itemArray";
 
+
 function createHTMLProductlist(products: Item[]) {
   for (let i = 0; i < products.length; i++) {
     //Creates the HTML elements we need:
@@ -11,6 +12,7 @@ function createHTMLProductlist(products: Item[]) {
     let itemArticleNumber = document.createElement("p") as HTMLParagraphElement;
     let itemSize = document.createElement("p") as HTMLParagraphElement;
     let itemPrice = document.createElement("p") as HTMLParagraphElement;
+    let addBtn = document.createElement("button") as HTMLButtonElement;
 
     //Adds classes to the elements
     itemContainer.classList.add("itemCard");
@@ -20,6 +22,13 @@ function createHTMLProductlist(products: Item[]) {
     itemArticleNumber.classList.add("itemCard__articleNumber");
     itemPrice.classList.add("itemCard__price");
     itemSize.classList.add("itemCard__size");
+    addBtn.classList.add("itemCard__addBtn");
+
+    //Eventlistener for adding to cart
+    addBtn.addEventListener("click", () => {
+      //addToCart(products[i]);
+      console.log(products[i]);
+    })
 
     //Adds id
 
@@ -33,6 +42,7 @@ function createHTMLProductlist(products: Item[]) {
     itemArticleNumber.innerText =
       "Artikel nummer: " + products[i].articleNumber;
     itemSize.innerText = "Storlek: " + products[i].size;
+    addBtn.innerHTML = "Köp";
 
     //Adds elements to page
     let flexContainer = document.getElementById(
@@ -46,7 +56,9 @@ function createHTMLProductlist(products: Item[]) {
     itemContainer.appendChild(itemArticleNumber);
     itemContainer.appendChild(itemPrice);
     itemContainer.appendChild(itemSize);
+    itemContainer.appendChild(addBtn);
   }
 }
 
 createHTMLProductlist(products);
+
