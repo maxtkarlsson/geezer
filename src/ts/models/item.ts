@@ -1,8 +1,8 @@
 export class Item {
-  articleNumber: Number;
-  title: String;
-  imageUrl: String;
-  desc: String;
+  articleNumber: string;
+  title: string;
+  imageUrl: string;
+  desc: string;
   price: Number;
   size: string;
   sizeValue: number;
@@ -10,7 +10,7 @@ export class Item {
   addBtn: string;
 
   constructor(
-    articleNumber: Number,
+    articleNumber: string,
     title: string,
     imageUrl: string,
     desc: string,
