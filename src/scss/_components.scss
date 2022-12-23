@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:ital,wght@1,900&family=Play:wght@700&display=swap');
 /* This file contains reusables such as buttons, navbars, cards etc. */
 
 // item cards
@@ -7,3 +8,67 @@
   }
 }
 */
+
+// Header and navbar
+
+.brand {
+  background-color: black;
+  color: white;
+  font-family: 'Inter';
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+#brand-logo {
+  
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+nav {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  //justify-content: space-between;
+  //align-items: center;
+  font-family: 'Inter';
+  background-color: black;
+  color: white;
+}
+
+#nav-container {
+  display: flex;
+  
+ 
+  //justify-content:space-between;
+  width: 50vw;
+  padding-bottom: 0.5rem;
+  
+  
+}
+
+.nav-container-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  float: left;
+  padding: 5px;
+  font-family: 'Inter', sans-serif;
+}
+
+.nav-container-link:hover {
+  color: white;
+  
+}
+.cart-container {
+  display: flex;
+  width: 50vw;
+  flex-direction: row;
+  justify-content: right; 
+}
