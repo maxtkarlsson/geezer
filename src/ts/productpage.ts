@@ -17,7 +17,6 @@ function addToCart(product:Item){
 
 }*/
 
-
 function createHTMLProductlist(products: Item[]) {
   for (let i = 0; i < products.length; i++) {
     //Creates the HTML elements we need:
@@ -44,13 +43,12 @@ function createHTMLProductlist(products: Item[]) {
     addBtn.addEventListener("click", () => {
       //addToCart(products[i]);
       console.log(products[i]);
-    })
+    });
 
     //Adds id
 
     //Adds content to the elements
-    itemImg.src =
-      "https://dl.dropboxusercontent.com/s/owlgd106tqi7t2h/200x200.png?dl=0";
+    itemImg.src = products[i].imageUrl;
     itemImg.alt = "";
     itemTitle.innerText = products[i].title;
     itemDesc.innerText = products[i].desc;
@@ -77,4 +75,3 @@ function createHTMLProductlist(products: Item[]) {
 }
 
 createHTMLProductlist(products);
-
