@@ -1,6 +1,7 @@
 import { Item } from "./models/item";
 import { products } from "./models/itemArray";
 import { ShoppingCart } from "./models/ShoppingCart";
+//import { createHTMLCartpage } from "./cartpage"; BUG
 
 let cartItemsLS: ShoppingCart[] = [];
 
@@ -80,6 +81,7 @@ function createHTMLProductlist(products: Item[]) {
       //console.log(products[i]);
       console.log(cartItemsLS);
       console.log(cartItem);
+      //createHTMLCartpage(cartItemsLS); BUG
     });
 
     //Adds id

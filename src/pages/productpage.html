@@ -12,6 +12,10 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+    />
     <link rel="stylesheet" href="../scss/main.scss" />
     <!-- JavaScript Bundle with Popper -->
     <script
@@ -20,8 +24,76 @@
       crossorigin="anonymous"
     ></script>
     <script defer src="/src/ts/productpage.ts" type="module"></script>
+    <script defer src="/src/ts/cartpage.ts" type="module"></script>
   </head>
   <body>
+    <header>
+      <div class="brand">
+        <h1 id="brand-logo">geezer.</h1>
+      </div>
+      <nav>
+        <a id="/src/index.html"></a>
+        <div id="nav-container">
+          <a class="nav-container-link" href="/src/index.html">Start</a>
+          <a class="nav-container-link" class="redirect" href="productpage.html"
+            >Products</a
+          >
+        </div>
+        <div class="cart-container">
+          <button id="basketCount">0</button>
+
+          <button
+            class="button-offcanvas"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight"
+          >
+            <i class="bi bi-cart"></i>
+          </button>
+        </div>
+      </nav>
+      <div
+        class="offcanvas offcanvas-end"
+        tabindex="-1"
+        id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel"
+      >
+        <div class="offcanvas-header">
+          <h4 id="offcanvasRightLabel">CART</h4>
+          <button
+            type="button"
+            class="btn-close text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="overflow-auto">
+          <div id="shopping-basket-offcanvas"></div>
+          <div class="offcanvas-body">
+            <a class="redirect">
+              <button class="purchase-button-offcanvas"></button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <p>sortera</p>
+      <div class="flexContainer">
+        <a id="./productpage.html"></a>
+        <div class="itemCard">
+          <div class="itemCard__image"></div>
+          <div class="itemCard__title"></div>
+          <div class="itemCard__desc"></div>
+          <div class="itemCard__articleNumber"></div>
+          <div class="itemCard__price"></div>
+          <div class="itemCard__button"></div>
+          <div class="itemCard__button--delete"></div>
+        </div>
+        <p>buttons</p>
+      </div>
+    </main>
     <div id="flexContainer"></div>
     <a href="./productdetailspage.html">product details</a>
   </body>

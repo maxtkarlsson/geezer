@@ -16,7 +16,7 @@ let cartItems = cartItemsLS.map((painting) => {
     console.log(painting);
 });
 
-function createHTMLCartpage(cartItemsLS:ShoppingCart[]){
+export function createHTMLCartpage(cartItemsLS:ShoppingCart[]){
   let cartContainer = document.querySelector(".offcanvas-body")as HTMLDivElement;
   cartContainer.innerHTML="";
   for(let i=0;i<cartItemsLS.length;i++){
