@@ -77,9 +77,29 @@ nav {
   padding: 1em;
   border-bottom: 1px solid grey;
 
+  &--small {
+    @include base.FlexRowCenter;
+    justify-content: space-between;
+    margin-top: 1em;
+  }
+
+  &__image {
+    &--small {
+      height: 100px;
+      width: 100px;
+    }
+  }
+
   &__title {
     margin-top: 0.5em;
     align-self: flex-start;
+
+    &--small {
+      font-size: 1em;
+      align-self: center;
+      margin-top: 0;
+      //background-color: blue;
+    }
   }
 
   &__articleNumber {
@@ -89,10 +109,20 @@ nav {
 
   &__price {
     font-size: 2em;
+    &--small {
+      align-self: center;
+      //background-color: burlywood;
+    }
   }
 
   &__size {
     font-weight: bold;
+  }
+
+  &__quantity {
+    &--small {
+      //background-color: coral;
+    }
   }
 
   &__addBtn {
