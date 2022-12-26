@@ -28,7 +28,7 @@ function createHTMLCartpage(cartItemsLS:ShoppingCart[]){
     let itemQuantity = document.createElement("p") as HTMLParagraphElement;
 
     //Adds classes to the elements:
-    itemContainer.classList.add("itemCard");
+    itemContainer.classList.add("itemCard--small");
     itemImg.classList.add("itemCard__image--small");
     itemTitle.classList.add("itemCard__title--small");
     itemPrice.classList.add("itemCard__price--small");
