@@ -2,7 +2,7 @@ import { Item } from "./models/item";
 import { products } from "./models/itemArray";
 import { ShoppingCart } from "./models/ShoppingCart";
 
-let cartItemsLS: ShoppingCart[] = [];
+//let cartItemsLS: ShoppingCart[] = [];
 
 /*
 let cart = new ShoppingCart (0, []);
@@ -16,6 +16,28 @@ function addToCart(product:Item){
   //console.log(r);
 
 }*/
+
+
+let retrievedItemsFromLS = localStorage.getItem("itemsToLS");
+JSON.parse(localStorage.getItem("itemsToLS") || "[{}]");
+console.log(retrievedItemsFromLS);
+JSON.stringify(retrievedItemsFromLS);
+
+if (typeof retrievedItemsFromLS === "string") {
+  const paintings = JSON.parse(retrievedItemsFromLS);
+  JSON.parse(localStorage.getItem("itemsToLS") || "{}");
+  console.log(paintings);
+ 
+  
+}
+
+
+
+
+
+
+
+let cartItemsLS: ShoppingCart[] = [];
 
 function createHTMLProductlist(products: Item[]) {
   for (let i = 0; i < products.length; i++) {
