@@ -112,3 +112,5 @@ export let products: Item[] = [
     "Add"
   ),
 ];
+
+localStorage.setItem("itemsToLS", JSON.stringify(products) || "[]");
