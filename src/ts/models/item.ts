@@ -1,4 +1,4 @@
-export class Item {
+/*export class Item {
   articleNumber: string;
   title: string;
   imageUrl: string;
@@ -30,4 +30,21 @@ export class Item {
     this.infoBtn = infoBtn;
     this.addBtn = addBtn;
   }
+}*/
+
+// New version down below, old version up above
+// Changed the constructor to public to make them globally accessible
+
+export class Item {
+  constructor(
+    public articleNumber: string,
+    public title: string,
+    public imageUrl: string,
+    public desc: string,
+    public price: number,
+    public size: string,
+    public sizeValue: number,
+    public infoBtn: string,
+    public addBtn: string
+  ) {}  
 }
