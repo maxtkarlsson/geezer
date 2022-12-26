@@ -45,6 +45,7 @@ export class Item {
     public size: string,
     public sizeValue: number,
     public infoBtn: string,
-    public addBtn: string
-  ) {}  
+    public addBtn: string,
+    public quantity: number
+  ) {}
 }

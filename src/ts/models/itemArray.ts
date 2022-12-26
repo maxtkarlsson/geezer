@@ -10,7 +10,8 @@ export let products: Item[] = [
     "S",
     1,
     "Info",
-    "Add"
+    "Add",
+    1
   ),
   new Item(
     "1002",
@@ -21,7 +22,8 @@ export let products: Item[] = [
     "L",
     3,
     "Info",
-    "Add"
+    "Add",
+    1
   ),
   new Item(
     "1003",
@@ -32,7 +34,8 @@ export let products: Item[] = [
     "M",
     2,
     "Info",
-    "Add"
+    "Add",
+    1
   ),
   new Item(
     "1004",
@@ -43,7 +46,8 @@ export let products: Item[] = [
     "S",
     1,
     "Info",
-    "Add"
+    "Add",
+    1
   ),
   new Item(
     "1005",
@@ -54,7 +58,8 @@ export let products: Item[] = [
     "L",
     3,
     "Info",
-    "Add"
+    "Add",
+    1
   ),
   new Item(
     "1006",
@@ -65,7 +70,8 @@ export let products: Item[] = [
     "L",
     3,
     "Info",
-    "Add"
+    "Add",
+    1
   ),
   new Item(
     "1007",
@@ -76,7 +82,8 @@ export let products: Item[] = [
     "M",
     2,
     "Info",
-    "Add"
+    "Add",
+    1
   ),
   new Item(
     "1008",
@@ -87,7 +94,8 @@ export let products: Item[] = [
     "M",
     2,
     "Info",
-    "Add"
+    "Add",
+    1
   ),
   new Item(
     "1009",
@@ -98,7 +106,8 @@ export let products: Item[] = [
     "L",
     3,
     "Info",
-    "Add"
+    "Add",
+    1
   ),
   new Item(
     "1010",
@@ -109,7 +118,8 @@ export let products: Item[] = [
     "S",
     1,
     "Info",
-    "Add"
+    "Add",
+    1
   ),
 ];
 
