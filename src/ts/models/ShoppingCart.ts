@@ -3,11 +3,9 @@ import { products } from "./itemArray";
 
 
 export class ShoppingCart {
-  quantity: Number;
-  itemList: Item[];
-  constructor(quantity: Number, itemList: Item[]) {
+  constructor(public quantity: number, public cartItem: Item) {
     this.quantity = quantity;
-    this.itemList = itemList;
+    this.cartItem = cartItem;
   }
 }
 
