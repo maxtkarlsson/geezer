@@ -1,5 +1,21 @@
 import { Item } from "./models/item";
 import { products } from "./models/itemArray";
+import { ShoppingCart } from "./models/ShoppingCart";
+
+let cartItemsLS: ShoppingCart[] = [];
+
+/*
+let cart = new ShoppingCart (0, []);
+
+
+
+function addToCart(product:Item){
+
+  let r = cart.itemList.push(product);
+
+  //console.log(r);
+
+}*/
 
 
 function createHTMLProductlist(products: Item[]) {

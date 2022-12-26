@@ -20,3 +20,20 @@ export class ShoppingCart {
 }*/
 
 
+/*
+
+export class ShoppingCart {
+
+  quantity: Number;
+
+  cartItem: Item;
+
+  constructor(quantity: Number, cartItem:Item) {
+
+    this.quantity = quantity;
+
+    this.cartItem = cartItem;
+
+  }
+
+}*/
