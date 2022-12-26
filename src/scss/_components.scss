@@ -105,5 +105,9 @@ nav {
     padding-bottom: 0.3em;
     padding-right: 1em;
     padding-left: 1em;
+
+    &:hover {
+      background-color: #d4eb72;
+    }
   }
 }
