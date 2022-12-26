@@ -1,7 +1,14 @@
 /* This file contains the resets, variables and mixins  */
 
 /* Variables */
+//Breakpoints
 $desktop: 768px;
+
+//Colors
+$gblack: #0a0908;
+$gblueblack: #22333b;
+$ggrey: #f2f4f3;
+$ggreen: #c2e812;
 
 /* Resets */
 * {
@@ -9,15 +16,19 @@ $desktop: 768px;
   margin: 0;
   padding: 0;
 }
-/*
+
 html {
-  font-family: "Times New Roman", Times, serif;
+  //font-family: "Times New Roman", Times, serif;
   scroll-behavior: smooth;
+  //background-color: #f2f4f3;
 }
-*/
+
+body {
+  background-color: $ggrey;
+}
+
 /* Mixins */
 
-/*
 @mixin FlexColCenter {
   display: flex;
   flex-direction: column;
@@ -31,10 +42,9 @@ html {
   justify-content: center;
   align-items: center;
 }
-*/
 
 /* Mediaqueries mixins */
-/*
+
 @mixin for-size($size) {
   @if $size == desktop {
     @media screen and (min-width: $desktop) {
@@ -42,4 +52,3 @@ html {
     }
   }
 }
-*/
