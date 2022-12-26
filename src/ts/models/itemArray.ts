@@ -113,4 +113,4 @@ export let products: Item[] = [
   ),
 ];
 
-localStorage.setItem("itemsToLS", JSON.stringify(products) || "[]");
+//localStorage.setItem("itemsToLS", JSON.stringify(products) || "[]");

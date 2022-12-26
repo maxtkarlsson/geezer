@@ -2,7 +2,7 @@ import { Item } from "./models/item";
 import { products } from "./models/itemArray";
 import { ShoppingCart } from "./models/ShoppingCart";
 
-//let cartItemsLS: ShoppingCart[] = [];
+let cartItemsLS: ShoppingCart[] = [];
 
 /*
 let cart = new ShoppingCart (0, []);
@@ -16,13 +16,21 @@ function addToCart(product:Item){
   //console.log(r);
 
 }*/
-
-
-let retrievedItemsFromLS = localStorage.getItem("itemsToLS");
+/*
+let cartItemsLS: ShoppingCart[] = [];
+/*let retrievedItemsFromLS = localStorage.getItem("itemsToLS");
 JSON.parse(localStorage.getItem("itemsToLS") || "[{}]");
 console.log(retrievedItemsFromLS);
-JSON.stringify(retrievedItemsFromLS);
-
+JSON.stringify(retrievedItemsFromLS);*/
+/*
+export function retrieveCartItemsFromLS(): ShoppingCart[] {
+  cartItemsLS = JSON.parse(localStorage.getItem("itemsToLS") || "{}");
+  let cartItems = cartItemsLS.map((painting)) => {
+    return new ShoppingCart()
+  }
+}
+*/
+/*
 if (typeof retrievedItemsFromLS === "string") {
   const paintings = JSON.parse(retrievedItemsFromLS);
   JSON.parse(localStorage.getItem("itemsToLS") || "{}");
@@ -30,6 +38,7 @@ if (typeof retrievedItemsFromLS === "string") {
  
   
 }
+*/
 
 
 
@@ -37,7 +46,7 @@ if (typeof retrievedItemsFromLS === "string") {
 
 
 
-let cartItemsLS: ShoppingCart[] = [];
+//let cartItemsLS: ShoppingCart[] = [];
 
 function createHTMLProductlist(products: Item[]) {
   for (let i = 0; i < products.length; i++) {
@@ -64,7 +73,13 @@ function createHTMLProductlist(products: Item[]) {
     //Eventlistener for adding to cart
     addBtn.addEventListener("click", () => {
       //addToCart(products[i]);
-      console.log(products[i]);
+      const cartItem: ShoppingCart = new ShoppingCart(1, products[i]);
+      cartItemsLS.push(cartItem);
+      //cartItemsLS.push(products[i]);
+      localStorage.setItem("itemsToLS", JSON.stringify(cartItemsLS) || "");
+      //console.log(products[i]);
+      console.log(cartItemsLS);
+      console.log(cartItem);
     });
 
     //Adds id
