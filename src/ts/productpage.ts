@@ -1,9 +1,16 @@
+//import { createHTMLCartpage } from "./cartpage";
+import { addToCart, getLocalStorage } from "./functions";
 import { Item } from "./models/item";
 import { products } from "./models/itemArray";
-import { ShoppingCartItem } from "./models/ShoppingCartItem";
+import { cart } from "./functions";
+
 //import { createHTMLCartpage } from "./cartpage"; BUG
 
-let cartItemsLS: ShoppingCartItem[] = [];
+
+//let cart: ShoppingCartItem[] = []; //Samla sådana object i den listan
+
+//let cartFromLS: ShoppingCartItem[] = [];
+//let cartItemsLS: ShoppingCartItem[] = [];
 
 /*
 let cart = new ShoppingCart (0, []);
@@ -74,7 +81,8 @@ function createHTMLProductlist(products: Item[]) {
     //Eventlistener for adding to cart
     addBtn.addEventListener("click", () => {
       //addToCart(products[i]);
-      const cartItem: ShoppingCartItem = new ShoppingCartItem(1, products[i]);
+      /*const cartItem: ShoppingCartItem = new ShoppingCartItem(1, products[i]);
+      
 
     
       cartItemsLS.push(cartItem);
@@ -88,7 +96,12 @@ function createHTMLProductlist(products: Item[]) {
         
       }); 
       return cartItemsLS;
-      //createHTMLCartpage(cartItemsLS); BUG
+      //createHTMLCartpage(cartItemsLS); BUG*/
+
+      addToCart(products[i]);
+      getLocalStorage();
+      //createHTMLCartpage(cart);
+      
     });
     
 

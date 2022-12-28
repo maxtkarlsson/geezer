@@ -8,32 +8,3 @@ export class ShoppingCartItem {
   }
   
 }
-
-/*
-export class ShoppingCart {
-  quantity: Number;
-  cartItem: Item;
-  constructor(quantity: Number, cartItem:Item) {
-    this.quantity = quantity;
-    this.cartItem = cartItem;
-  }
-}*/
-
-
-/*
-
-export class ShoppingCart {
-
-  quantity: Number;
-
-  cartItem: Item;
-
-  constructor(quantity: Number, cartItem:Item) {
-
-    this.quantity = quantity;
-
-    this.cartItem = cartItem;
-
-  }
-
-}*/

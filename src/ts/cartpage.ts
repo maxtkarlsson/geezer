@@ -1,25 +1,24 @@
-import { Item } from "./models/item";
-import { products } from "./models/itemArray";
 import { ShoppingCartItem } from "./models/ShoppingCartItem";
+import { cart } from "./functions";
 
-let cartItemsLS: ShoppingCartItem[] = [];
-//localStorage.setItem("itemsToLS", JSON.stringify(cartItemsLS) || "[]");
+//let cart: ShoppingCartItem[] = [];
+//localStorage.setItem("itemsToLS", JSON.stringify(cart) || "[]");
 //console.log(products);
-//let cartItemsLS: ShoppingCart[] = [];
+//let cart: ShoppingCart[] = [];
 
 //localStorage.getItem("itemsToLS", JSON.)
-//cartItemsLS = JSON.parse(localStorage.getItem("itemsToLS") || "[]");
-//console.log(cartItemsLS);
-
-let cartItems = cartItemsLS.map((painting) => {
+//cart = JSON.parse(localStorage.getItem("itemsToLS") || "[]");
+//console.log(cart);
+/*
+let cartItems = cart.map((painting) => {
     return new ShoppingCartItem(painting.quantity, painting.cartItem);
     console.log(painting);
-});
+});*/
 
-export function createHTMLCartpage(cartItemsLS:ShoppingCartItem[]){
+export function createHTMLCartpage(cart:ShoppingCartItem[]){
   let cartContainer = document.querySelector(".offcanvas-body")as HTMLDivElement;
   cartContainer.innerHTML="";
-  for(let i=0;i<cartItemsLS.length;i++){
+  for(let i=0;i<cart.length;i++){
     //Creates the HTML elements we need:
     let itemContainer = document.createElement("div") as HTMLDivElement;
     let itemImg = document.createElement("img") as HTMLImageElement;
@@ -35,11 +34,11 @@ export function createHTMLCartpage(cartItemsLS:ShoppingCartItem[]){
     itemQuantity.classList.add("itemCard__quantity--small");
 
       //Adds content to the elements
-      itemImg.src = cartItemsLS[i].cartItem.imageUrl;
+      itemImg.src = cart[i].cartItem.imageUrl;
       itemImg.alt = "";
-      itemTitle.innerText = cartItemsLS[i].cartItem.title;
-      itemPrice.innerText = cartItemsLS[i].cartItem.price.toString() + " kr";
-      itemQuantity.innerText = "Antal: " + cartItemsLS[i].cartItem.quantity.toString();
+      itemTitle.innerText = cart[i].cartItem.title;
+      itemPrice.innerText = cart[i].cartItem.price.toString() + " kr";
+      itemQuantity.innerText = "Antal: " + cart[i].cartItem.quantity.toString();
 
       //Adds elements to page
       itemContainer.appendChild(itemImg);
@@ -51,14 +50,23 @@ export function createHTMLCartpage(cartItemsLS:ShoppingCartItem[]){
   }
 }
 
-createHTMLCartpage(cartItemsLS);
+createHTMLCartpage(cart);
+
+
+
+
+
+
+
+
+
 //let cart = new ShoppingCart (0, []);
 
 /*
 
 export function addToCart(quantity: number, cartItem: Item) {
 
-    if (Object.keys(cartItemsLS()).length === 0) {
+    if (Object.keys(cart()).length === 0) {
         let shoppingCartObject = new ShoppingCart(quantity, cartItem);
         let shoppingCartItems: ShoppingCart[] = [shoppingCartObject];
         localStorage.setItem("itemsToLS", JSON.stringify(shoppingCartItems) || "[]");
@@ -75,19 +83,19 @@ export function addToCart(quantity: number, cartItem: Item) {
 /*
 export function getCartItemsLS(): ShoppingCart[] {
     let cartItems: ShoppingCart[] = [];
-    let cartItemsLS: string = localStorage.getItem("itemsToLS") || "[]";
-    let cartItemsObjects = JSON.parse(cartItemsLS);
+    let cart: string = localStorage.getItem("itemsToLS") || "[]";
+    let cartItemsObjects = JSON.parse(cart);
 }*/
 /*
-let cartItemsLS: ShoppingCart[] = [];
+let cart: ShoppingCart[] = [];
 /*let retrievedItemsFromLS = localStorage.getItem("itemsToLS");
 JSON.parse(localStorage.getItem("itemsToLS") || "[{}]");
 console.log(retrievedItemsFromLS);
 JSON.stringify(retrievedItemsFromLS);*/
 /*
 export function retrieveCartItemsFromLS(): ShoppingCart[] {
-  cartItemsLS = JSON.parse(localStorage.getItem("itemsToLS") || "{}");
-  let cartItems = cartItemsLS.map((products)) => {
+  cart = JSON.parse(localStorage.getItem("itemsToLS") || "{}");
+  let cartItems = cart.map((products)) => {
     return new ShoppingCart()
   }
 }*/
@@ -108,4 +116,4 @@ if (typeof retrievedItemsFromLS === "string") {
 
 
 
-//let cartItemsLS: ShoppingCart[] = [];
+//let cart: ShoppingCart[] = [];
