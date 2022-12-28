@@ -11,5 +11,5 @@ let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;
 cartBody.appendChild(purchaseBtn);
 
 purchaseBtn.addEventListener("click", ()=>{
-  window.location.replace("/src/pages/checkoutpage.html");
+  window.location.replace("/pages/checkoutpage.html");
 });
