@@ -70,6 +70,7 @@ function createHTMLProductlist(products: Item[]) {
     let itemSize = document.createElement("p") as HTMLParagraphElement;
     let itemPrice = document.createElement("p") as HTMLParagraphElement;
     let addBtn = document.createElement("button") as HTMLButtonElement;
+    let productInfoBtn = document.createElement("button") as HTMLButtonElement;
 
     //Adds classes to the elements
     itemContainer.classList.add("itemCard");
@@ -80,6 +81,7 @@ function createHTMLProductlist(products: Item[]) {
     itemPrice.classList.add("itemCard__price");
     itemSize.classList.add("itemCard__size");
     addBtn.classList.add("itemCard__addBtn");
+    productInfoBtn.classList.add("itemCard__addBtn");
 
     //Eventlistener for adding to cart
     addBtn.addEventListener("click", () => {
@@ -107,6 +109,14 @@ function createHTMLProductlist(products: Item[]) {
       //createHTMLCartpage(cart);
       
     });
+
+    //Eventlistener for btn that takes you to product details
+    productInfoBtn.addEventListener("click", () => {
+      //createHTMLExtendedProductInfo(products[i]);
+      //selectedItem = products[i];
+      console.log(products[i]);
+      window.location.replace("/pages/productdetailspage.html");
+    });
     
 
     //Adds id
@@ -121,6 +131,7 @@ function createHTMLProductlist(products: Item[]) {
       "Artikel nummer: " + products[i].articleNumber;
     itemSize.innerText = "Storlek: " + products[i].size;
     addBtn.innerHTML = "Köp";
+    productInfoBtn.innerHTML = "Mer Info";
 
     //Adds elements to page
     let flexContainer = document.getElementById(
@@ -135,6 +146,7 @@ function createHTMLProductlist(products: Item[]) {
     itemContainer.appendChild(itemPrice);
     itemContainer.appendChild(itemSize);
     itemContainer.appendChild(addBtn);
+    itemContainer.appendChild(productInfoBtn);
   }
 }
 
