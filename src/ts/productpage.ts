@@ -3,6 +3,7 @@ import { addToCart, getLocalStorage } from "./functions";
 import { Item } from "./models/item";
 import { products } from "./models/itemArray";
 import { cart } from "./functions";
+import { ShoppingCartItem } from "./models/ShoppingCartItem";
 
 //import { createHTMLCartpage } from "./cartpage"; BUG
 
@@ -12,11 +13,11 @@ import { cart } from "./functions";
 //let cartFromLS: ShoppingCartItem[] = [];
 //let cartItemsLS: ShoppingCartItem[] = [];
 
+
+//let cart = new ShoppingCartItem (0, []);
+
+getLocalStorage();
 /*
-let cart = new ShoppingCart (0, []);
-
-
-
 function addToCart(product:Item){
 
   let r = cart.itemList.push(product);
@@ -135,3 +136,5 @@ function createHTMLProductlist(products: Item[]) {
 }
 
 createHTMLProductlist(products);
+
+//test
