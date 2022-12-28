@@ -4,6 +4,7 @@ import { Item } from "./models/item";
 import { products } from "./models/itemArray";
 import { cart } from "./functions";
 import { ShoppingCartItem } from "./models/ShoppingCartItem";
+import { createHTMLCartpage } from "./cartpage";
 
 //import { createHTMLCartpage } from "./cartpage"; BUG
 
@@ -101,6 +102,7 @@ function createHTMLProductlist(products: Item[]) {
 
       addToCart(products[i]);
       getLocalStorage();
+      createHTMLCartpage(cart);
       //createHTMLCartpage(cart);
       
     });
@@ -136,5 +138,6 @@ function createHTMLProductlist(products: Item[]) {
 }
 
 createHTMLProductlist(products);
+createHTMLCartpage(cart);
 
-//test
+
