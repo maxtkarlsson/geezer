@@ -1,9 +1,9 @@
 import { Item } from "./models/item";
 import { products } from "./models/itemArray";
-import { ShoppingCart } from "./models/ShoppingCart";
+import { ShoppingCartItem } from "./models/ShoppingCartItem";
 //import { createHTMLCartpage } from "./cartpage"; BUG
 
-let cartItemsLS: ShoppingCart[] = [];
+let cartItemsLS: ShoppingCartItem[] = [];
 
 /*
 let cart = new ShoppingCart (0, []);
@@ -74,15 +74,23 @@ function createHTMLProductlist(products: Item[]) {
     //Eventlistener for adding to cart
     addBtn.addEventListener("click", () => {
       //addToCart(products[i]);
-      const cartItem: ShoppingCart = new ShoppingCart(1, products[i]);
+      const cartItem: ShoppingCartItem = new ShoppingCartItem(1, products[i]);
+
+    
       cartItemsLS.push(cartItem);
       //cartItemsLS.push(products[i]);
       localStorage.setItem("itemsToLS", JSON.stringify(cartItemsLS) || "");
       //console.log(products[i]);
       console.log(cartItemsLS);
-      console.log(cartItem);
+      
+      let cartItems = cartItemsLS.map((itemInCart) => {
+        return new ShoppingCartItem(itemInCart.quantity, itemInCart.cartItem);
+        
+      }); 
+      return cartItemsLS;
       //createHTMLCartpage(cartItemsLS); BUG
     });
+    
 
     //Adds id
 

@@ -1,22 +1,22 @@
 import { Item } from "./models/item";
 import { products } from "./models/itemArray";
-import { ShoppingCart } from "./models/ShoppingCart";
+import { ShoppingCartItem } from "./models/ShoppingCartItem";
 
-let cartItemsLS: ShoppingCart[] = [];
+let cartItemsLS: ShoppingCartItem[] = [];
 //localStorage.setItem("itemsToLS", JSON.stringify(cartItemsLS) || "[]");
 //console.log(products);
 //let cartItemsLS: ShoppingCart[] = [];
 
 //localStorage.getItem("itemsToLS", JSON.)
-cartItemsLS = JSON.parse(localStorage.getItem("itemsToLS") || "[]");
-console.log(cartItemsLS);
+//cartItemsLS = JSON.parse(localStorage.getItem("itemsToLS") || "[]");
+//console.log(cartItemsLS);
 
 let cartItems = cartItemsLS.map((painting) => {
-    return new ShoppingCart(painting.quantity, painting.cartItem);
+    return new ShoppingCartItem(painting.quantity, painting.cartItem);
     console.log(painting);
 });
 
-export function createHTMLCartpage(cartItemsLS:ShoppingCart[]){
+export function createHTMLCartpage(cartItemsLS:ShoppingCartItem[]){
   let cartContainer = document.querySelector(".offcanvas-body")as HTMLDivElement;
   cartContainer.innerHTML="";
   for(let i=0;i<cartItemsLS.length;i++){
