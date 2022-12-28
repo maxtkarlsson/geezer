@@ -14,6 +14,8 @@
 // Header and navbar
 
 .brand {
+  margin: 0;
+  padding: 0;
   background-color: black;
   color: white;
   font-family: "Inter";
@@ -70,9 +72,16 @@ nav {
   justify-content: right;
 }
 
-.flexContainer {
+#flexContainer {
+  @include b.FlexColCenter;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  background-color: b.$ggrey;
   @include b.for-size(desktop) {
+   @include b.FlexRowCenter;
     background-color: b.$ggrey;
+    flex-wrap: wrap;
+    text-align: center;
   }
     
 }
@@ -83,6 +92,25 @@ nav {
   margin-top: 2em;
   padding: 1em;
   border-bottom: 1px solid grey;
+  text-align: center;
+  flex-wrap: wrap;
+  
+  background-color: b.$ggrey;
+  @include b.for-size(desktop) {
+    border-bottom: 0px;
+    background-color: b.$ggrey;
+    text-align: center;
+    width: 48vw;
+    height: 800px;
+    padding:0;
+    //flex-flow: block;
+    flex-wrap: wrap;
+   //@include b.FlexRowCenter;
+   @include b.FlexColCenter;
+   display: inline-block;
+   //justify-self: center;
+   
+  }
 
   &--small {
     @include b.FlexRowCenter;
@@ -91,6 +119,17 @@ nav {
   }
 
   &__image {
+    @include b.FlexColCenter;
+    @include b.for-size(desktop) {
+      
+      //text-align: center;
+      align-self: center;
+      justify-self: center;
+      flex-wrap: wrap;
+      //@include b.FlexRowCenter;
+      //display: block;
+    }
+    
     &--small {
       height: 100px;
       width: 100px;
@@ -98,8 +137,13 @@ nav {
   }
 
   &__title {
+    display: flex;
     margin-top: 0.5em;
     align-self: flex-start;
+    flex-wrap: wrap;
+    font-size: 1.5em;
+    text-align: center;
+    
 
     &--small {
       font-size: 1em;
