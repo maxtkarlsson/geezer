@@ -1,3 +1,14 @@
+@use "base" as b;
 @import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:ital,wght@1,900&family=Play:wght@700&display=swap");
 
 /* This file contains all CSS regarding basic layout */
+
+body {
+    background-color: b.$ggrey;
+    margin: 0;
+    width: 100vw;
+    @include b.for-size(desktop) {
+        background-color: b.$gblueblack;
+    }
+    
+}

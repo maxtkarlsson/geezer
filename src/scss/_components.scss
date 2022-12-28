@@ -1,4 +1,4 @@
-@use "base";
+@use "base" as b;
 @import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:ital,wght@1,900&family=Play:wght@700&display=swap");
 
 /* This file contains reusables such as buttons, navbars, cards etc. */
@@ -70,15 +70,22 @@ nav {
   justify-content: right;
 }
 
+.flexContainer {
+  @include b.for-size(desktop) {
+    background-color: b.$ggrey;
+  }
+    
+}
+
 //Item cards
 .itemCard {
-  @include base.FlexColCenter;
+  @include b.FlexColCenter;
   margin-top: 2em;
   padding: 1em;
   border-bottom: 1px solid grey;
 
   &--small {
-    @include base.FlexRowCenter;
+    @include b.FlexRowCenter;
     justify-content: space-between;
     margin-top: 1em;
   }
@@ -126,7 +133,7 @@ nav {
   }
 
   &__addBtn {
-    background-color: base.$ggreen;
+    background-color: b.$ggreen;
     font-size: 1.5em;
     font-weight: bold;
     border: none;
