@@ -1,5 +1,4 @@
 import { Item } from "./item";
-import { products } from "./itemArray";
 
 
 export class ShoppingCartItem {
