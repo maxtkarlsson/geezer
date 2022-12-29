@@ -134,8 +134,8 @@ function createHTMLProductlist(products: Item[]) {
     productInfoBtn.innerHTML = "Mer Info";
 
     //Adds elements to page
-    let flexContainer = document.getElementById(
-      "flexContainer"
+    let flexContainer = document.querySelector(
+      ".flexContainer"
     ) as HTMLDivElement;
 
     flexContainer.appendChild(itemContainer);

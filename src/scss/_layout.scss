@@ -6,9 +6,14 @@
 body {
     background-color: b.$ggrey;
     margin: 0;
+    padding: 0;
     width: 100vw;
     @include b.for-size(desktop) {
         background-color: b.$gblueblack;
     }
     
+}
+
+img {
+    display: flex;
 }
