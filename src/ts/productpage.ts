@@ -5,7 +5,10 @@ import { products } from "./models/itemArray";
 import { cart } from "./functions";
 import { ShoppingCartItem } from "./models/ShoppingCartItem";
 import { createHTMLCartpage } from "./functions";
+import { createHTMLExtendedProductInfo } from "./productdetailspage";
 
+
+//export let selectedItem:Item;
 
 //import { createHTMLCartpage } from "./cartpage"; BUG
 
@@ -71,6 +74,8 @@ function createHTMLProductlist(products: Item[]) {
     let itemPrice = document.createElement("p") as HTMLParagraphElement;
     let addBtn = document.createElement("button") as HTMLButtonElement;
     let productInfoBtn = document.createElement("button") as HTMLButtonElement;
+    let anchorProductInfo = document.createElement("a") as HTMLAnchorElement;
+    //anchorProductInfo.setAttribute("href", "/src/pages/productdetailspage.html");
 
     //Adds classes to the elements
     itemContainer.classList.add("itemCard");
@@ -112,10 +117,12 @@ function createHTMLProductlist(products: Item[]) {
 
     //Eventlistener for btn that takes you to product details
     productInfoBtn.addEventListener("click", () => {
-      //createHTMLExtendedProductInfo(products[i]);
       //selectedItem = products[i];
+      //createHTMLExtendedProductInfo(selectedItem);
+      //set item i LS, json.stringify products[i];
+      //location href --> inforbtn.href
       console.log(products[i]);
-      window.location.replace("/pages/productdetailspage.html");
+      //window.location.replace("/pages/productdetailspage.html");
     });
     
 
@@ -147,6 +154,7 @@ function createHTMLProductlist(products: Item[]) {
     itemContainer.appendChild(itemSize);
     itemContainer.appendChild(addBtn);
     itemContainer.appendChild(productInfoBtn);
+    productInfoBtn.appendChild(anchorProductInfo);
   }
 }
 
@@ -163,9 +171,3 @@ cartBody.appendChild(purchaseBtn);
 purchaseBtn.addEventListener("click", ()=>{
   window.location.replace("/pages/checkoutpage.html");
 });
-
-
-
-
-
-

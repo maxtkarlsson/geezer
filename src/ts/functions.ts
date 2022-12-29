@@ -1,5 +1,6 @@
 import { ShoppingCartItem } from "./models/ShoppingCartItem";
 import { Item } from "./models/item";
+import { products } from "./models/itemArray";
 
 
 export let cart: ShoppingCartItem[] = []; //Samla sådana object i den listan
@@ -60,4 +61,13 @@ export function addToCart(product: Item) {
     }
   }
   
+
+
+  /*
+  export function createHTMLExtendedProductInfo(product: Item) {
+    let selectedItem: Item = new Item(products[i].articleNumber,products[i].title,products[i].imageUrl, products[i].imageUrlLarge, products[i].desc,products[i].descLong, products[i].price, products[i].size, products[i].sizeValue, products[i].infoBtn,products[i].addBtn, products[i].quantity);
+
+  
+  }*/
+
   
