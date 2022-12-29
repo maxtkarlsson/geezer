@@ -7,7 +7,6 @@ import { ShoppingCartItem } from "./models/ShoppingCartItem";
 import { createHTMLCartpage } from "./functions";
 import { createHTMLExtendedProductInfo } from "./productdetailspage";
 
-
 //export let selectedItem:Item;
 
 //import { createHTMLCartpage } from "./cartpage"; BUG
