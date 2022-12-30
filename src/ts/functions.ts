@@ -95,9 +95,15 @@ export function createHTMLCartpage(cart: ShoppingCartItem[]) {
     increaseBtn.addEventListener("click", () => {});
     decreaseBtn.addEventListener("click", () => {
       console.log("decreaseBtn clicked.");
+      cart[i].quantity--;
 
-      decreaseQuantity(cart[i]);
-      getLocalStorage();
+      if (cart[i].quantity < 1) {
+        cart[i].quantity++;
+      }
+      localStorage.setItem("cart", JSON.stringify(cart) || "[]");
+
+      //decreaseQuantity(cart[i]);
+      //getLocalStorage(); //setta local
       createHTMLCartpage(cart);
     });
 
