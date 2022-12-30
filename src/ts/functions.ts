@@ -55,6 +55,7 @@ function removeItem(product: ShoppingCartItem) {
     }
   }
   localStorage.setItem("cart", JSON.stringify(cart));
+  console.log("Function removeItem run.");
 }
 
 export function getLocalStorage() {
