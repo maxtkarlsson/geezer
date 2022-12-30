@@ -2,8 +2,30 @@ import { products } from "./models/itemArray";
 import { Item } from "./models/item";
 //import { selectedItem } from "./productpage";
 
+//let getProduct: string = localStorage.getItem("products");
+/*function getCurrentObject (getCurrentProduct: string) {
+  let getCurrentProduct: null = localStorage.getItem("product");
+  return getCurrentProduct;
+}
+getCurrentObject(value as string)*/
+//let getCurrentProduct = localStorage.getItem("product");
 
+//JSON.parse(getCurrentProduct);
 //createHTMLExtendedProductInfo(selectedItem);
+/*
+function clickForInfo(clickedProduct: Item) {
+  let infoArray: Item = new Item()
+}*/
+/*
+function getClickedObject (product: Item) {
+  let i: number = 0;
+  let currentItem: Item = new Item(products.);
+  let currentItemObject = JSON.parse(localStorage.getItem("product") || "{}");
+  currentItem.push(currentItemObject);
+  console.log(currentItem);
+  console.log(currentItemObject);
+}
+getClickedObject();*/
 
 export function createHTMLExtendedProductInfo(product:Item) {
     let cartContainer = document.querySelector(".offcanvas-body")as HTMLDivElement;

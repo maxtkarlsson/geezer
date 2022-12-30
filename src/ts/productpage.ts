@@ -74,7 +74,7 @@ function createHTMLProductlist(products: Item[]) {
     let addBtn = document.createElement("button") as HTMLButtonElement;
     let productInfoBtn = document.createElement("button") as HTMLButtonElement;
     let anchorProductInfo = document.createElement("a") as HTMLAnchorElement;
-    //anchorProductInfo.setAttribute("href", "/src/pages/productdetailspage.html");
+    anchorProductInfo.href = "/src/pages/productdetailspage.html";
 
     //Adds classes to the elements
     itemContainer.classList.add("itemCard");
@@ -115,14 +115,25 @@ function createHTMLProductlist(products: Item[]) {
     });
 
     //Eventlistener for btn that takes you to product details
+    productInfoBtn.value = products[i].articleNumber;
     productInfoBtn.addEventListener("click", () => {
+
+      let currentItem = Object.keys(products[i]);
+      console.log(currentItem);
       //selectedItem = products[i];
       //createHTMLExtendedProductInfo(selectedItem);
       //set item i LS, json.stringify products[i];
       //location href --> inforbtn.href
-      console.log(products[i]);
+      localStorage.setItem("product", JSON.stringify(products[i]) || "");
+      location.href = anchorProductInfo.href;
       //window.location.replace("/pages/productdetailspage.html");
     });
+
+    productInfoBtn.onclick = function(event: MouseEvent) {
+      if (productInfoBtn.id === products[i].articleNumber) {
+        createHTMLExtendedProductInfo(products[i])
+      }
+    }
     
 
     //Adds id
@@ -152,8 +163,8 @@ function createHTMLProductlist(products: Item[]) {
     itemContainer.appendChild(itemPrice);
     itemContainer.appendChild(itemSize);
     itemContainer.appendChild(addBtn);
-    itemContainer.appendChild(productInfoBtn);
-    productInfoBtn.appendChild(anchorProductInfo);
+    itemContainer.appendChild(anchorProductInfo);
+    anchorProductInfo.appendChild(productInfoBtn);
   }
 }
 
