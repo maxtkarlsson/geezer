@@ -7,6 +7,7 @@ import { ShoppingCartItem } from "./models/ShoppingCartItem";
 import { createHTMLCartpage } from "./functions";
 import { createHTMLExtendedProductInfo } from "./productdetailspage";
 
+
 //export let selectedItem:Item;
 
 //import { createHTMLCartpage } from "./cartpage"; BUG
@@ -30,8 +31,8 @@ console.log(JSON.stringify(sortedItemsDesc));*/
 // sort asc
 /*
 let sortedItemsAsc = products.sort((a: Item, b: Item) => (a.sizeValue < b.sizeValue) ? -1 : 0);
-console.log(JSON.stringify(sortedItemsAsc));*/
-
+console.log(JSON.stringify(sortedItemsAsc));
+*/
 
 /*
 const sortDesc = (products: Item[], desc: boolean = true) => {
@@ -202,6 +203,7 @@ function createHTMLProductlist(products: Item[]) {
     itemContainer.appendChild(anchorProductInfo);
     anchorProductInfo.appendChild(productInfoBtn);
   }
+  console.log("createHTMLProductlist has been run");
 }
 
 createHTMLProductlist(products);
@@ -217,13 +219,48 @@ cartBody.appendChild(purchaseBtn);
 purchaseBtn.addEventListener("click", ()=>{
   window.location.replace("/pages/checkoutpage.html");
 });
-
-let sortDesc: HTMLButtonElement = (document.querySelector("#sort-desc") as HTMLButtonElement);
+/*
+let sortDesc: HTMLButtonElement = document.getElementById("sort-desc") as HTMLButtonElement;
 sortDesc.addEventListener("click", () => {
-  products.sort((a: Item, b: Item) => (a.sizeValue > b.sizeValue) ? -1 : 1); // Sorts items from size large to small
-}); 
+  
+  let sortListToDesc = sortList(products);
+  createHTMLProductlist(sortListToDesc);
+}); */
 /*
 sortDesc.addEventListener("click", () => {
   products.sort((a: Item, b: Item) => (a.sizeValue > b.sizeValue) ? -1 : 1); // Sorts items from size large to small
   console.log(products);
 });*/
+/*
+function sortList (products: Item[]) {
+  let sortedDesc = products.sort((a: Item, b: Item) => (a.sizeValue > b.sizeValue) ? -1 : 1); // Sorts items from size large to small
+  console.log("sortlist function has been run");
+  return sortedDesc;
+  
+}*/
+
+let sortDesc: HTMLDivElement= document.querySelector(".sortLToS") as HTMLDivElement;
+/*sortDesc.addEventListener("click", () => {
+  let sortedDesc = products.sort((a: Item, b: Item) => {
+    let sizeValueOne: number = a.sizeValue;
+    let sizeValueTwo: number = b.sizeValue;
+    if(sizeValueOne > sizeValueTwo) {
+      return -1;
+    }
+
+  
+    createHTMLProductlist(sortedDesc);
+  }); 
+  createHTMLProductlist(sortedDesc);
+  console.log(sortedDesc);
+  });*/
+
+  //createHTMLProductlist(sortedDesc);
+/*
+sortDesc.onclick = function () {
+  let sortedItemsDesc = products.sort((a: Item, b: Item) => (a.sizeValue > b.sizeValue) ? -1 : 1);
+  
+
+  
+  return createHTMLProductlist(sortedItemsDesc);
+};*/
