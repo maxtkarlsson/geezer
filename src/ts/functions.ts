@@ -27,14 +27,12 @@ export function addToCart(product: Item) {
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
-  getLocalStorage();
-  console.log(cart);
 }
 
-function decreaseQuantity(product: Item) {
+function decreaseQuantity(product: ShoppingCartItem) {
   for (let i = 0; i < cart.length; i++) {
     if (
-      cart[i].cartItem.articleNumber === product.articleNumber &&
+      cart[i].cartItem.articleNumber === product.cartItem.articleNumber &&
       cart[i].quantity > 1
     ) {
       cart[i].quantity = cart[i].quantity - 1;
@@ -44,17 +42,19 @@ function decreaseQuantity(product: Item) {
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
-  getLocalStorage();
+  console.log(
+    "Function decreaseQuantity run with product:" +
+      JSON.stringify(product.cartItem.title)
+  );
 }
 
-function removeItem(product: Item) {
+function removeItem(product: ShoppingCartItem) {
   for (let i = 0; i < cart.length; i++) {
-    if (cart[i].cartItem.articleNumber === product.articleNumber) {
+    if (cart[i].cartItem.articleNumber === product.cartItem.articleNumber) {
       cart.splice(i, 1);
     }
   }
   localStorage.setItem("cart", JSON.stringify(cart));
-  getLocalStorage();
 }
 
 export function getLocalStorage() {
@@ -78,6 +78,8 @@ export function createHTMLCartpage(cart: ShoppingCartItem[]) {
     let itemTitle = document.createElement("h1") as HTMLHeadElement;
     let itemPrice = document.createElement("p") as HTMLParagraphElement;
     let itemQuantity = document.createElement("p") as HTMLParagraphElement;
+    let increaseBtn = document.createElement("button") as HTMLButtonElement;
+    let decreaseBtn = document.createElement("button") as HTMLButtonElement;
 
     //Adds classes to the elements:
     itemContainer.classList.add("itemCard--small");
@@ -85,19 +87,35 @@ export function createHTMLCartpage(cart: ShoppingCartItem[]) {
     itemTitle.classList.add("itemCard__title--small");
     itemPrice.classList.add("itemCard__price--small");
     itemQuantity.classList.add("itemCard__quantity--small");
+    increaseBtn.classList.add("itemCard__increaseBtn");
+    decreaseBtn.classList.add("itemCard__decreaseBtn");
+
+    //Adds eventlistener to buttons
+    increaseBtn.addEventListener("click", () => {});
+    decreaseBtn.addEventListener("click", () => {
+      console.log("decreaseBtn clicked.");
+
+      decreaseQuantity(cart[i]);
+      getLocalStorage();
+      createHTMLCartpage(cart);
+    });
 
     //Adds content to the elements
     itemImg.src = cart[i].cartItem.imageUrl;
     itemImg.alt = "";
     itemTitle.innerText = cart[i].cartItem.title;
     itemPrice.innerText = cart[i].cartItem.price.toString() + " kr";
-    itemQuantity.innerText = "Antal: " + cart[i].cartItem.quantity.toString();
+    itemQuantity.innerText = "Antal: " + cart[i].quantity.toString();
+    increaseBtn.innerText = "+";
+    decreaseBtn.innerText = "-";
 
     //Adds elements to page
     itemContainer.appendChild(itemImg);
     itemContainer.appendChild(itemTitle);
     itemContainer.appendChild(itemPrice);
     itemContainer.appendChild(itemQuantity);
+    itemContainer.appendChild(decreaseBtn);
+    itemContainer.appendChild(increaseBtn);
     cartContainer.appendChild(itemContainer);
   }
 }
