@@ -114,4 +114,25 @@ export function createHTMLCartpage() {
     cartContainer.appendChild(itemContainer);
     cartBody.appendChild(purchaseBtn); ///////
   }
+  sumCart(); ///////////////////Ska denna verkligen vara här?? Tar inte ändringar om flera i quntity eller delete i cart
 }
+
+export function sumCart (){
+  let totalSum:number = 0;
+  let cart: ShoppingCartItem[] = getLocalStorage();
+  console.log("sumcart has been run");
+  
+  let cartSum = document.createElement("p")as HTMLParagraphElement;
+  let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;
+  for (let i=0;i<cart.length;i++){
+    totalSum += cart[i].cartItem.price * cart[i].cartItem.quantity;
+    cartSum.innerHTML = "Totalt:" + totalSum.toString() + "kr";
+    cartBody.appendChild(cartSum);
+    localStorage.setItem("cart", JSON.stringify(cart) || "[]");
+    console.log(totalSum);
+  }
+  //return sumCart;
+}
+
+
+
