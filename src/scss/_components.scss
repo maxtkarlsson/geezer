@@ -364,3 +364,20 @@ nav {
     }
   }
 }
+
+#checkoutContainer {
+  @include b.FlexColCenter;
+  @include b.for-size(desktop){
+    @include b.FlexRowCenter
+  }
+}
+
+.itemCardCheckout--small {
+  flex-basis: 100%;
+
+.itemCardCheckout__image--small{
+  @include b.for-size(desktop){
+    @include b.FlexRowCenter
+  }
+}
+}
