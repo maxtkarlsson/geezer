@@ -141,17 +141,7 @@ function createHTMLProductlist(products: Item[]) {
 createHTMLProductlist(products);
 createHTMLCartpage();
 
-/*
-let purchaseBtn = document.createElement("button") as HTMLButtonElement;
-purchaseBtn.classList.add("purchaseBtn");
-purchaseBtn.innerHTML = "Till betalning";
-let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;
-cartBody.appendChild(purchaseBtn);
 
-purchaseBtn.addEventListener("click", () => {
-  window.location.replace("/pages/checkoutpage.html");
-});
-*/
 
 
 
@@ -162,9 +152,12 @@ let sortContainer: HTMLDivElement = (document.querySelector(".sort") as HTMLDivE
 let sortDesc: HTMLButtonElement = document.querySelector(
   "#sort-desc"
 ) as HTMLButtonElement;
+let sortAsc: HTMLButtonElement = document.querySelector("#sort-asc") as HTMLButtonElement;
 sortDesc.innerHTML = "Sortera L - S";
+sortAsc.innerHTML = "Sortera S - L";
 
 sortContainer.appendChild(sortDesc);
+sortContainer.appendChild(sortAsc);
 
 
 sortDesc.addEventListener("click", () => {
@@ -186,15 +179,7 @@ sortDesc.addEventListener("click", () => {
 });
 
 
-/*
-function sortDescending(products: Item[]) {
-  let sortedItemsDesc = products.sort((a: Item, b: Item) => (a.sizeValue > b.sizeValue) ? -1 : 1);
-  //return sortedItemsDesc;
-  
-  console.log(sortedItemsDesc);
 
-
-};*/
 
 export function sortDescending () {
 
@@ -203,4 +188,26 @@ export function sortDescending () {
 
 
 
+};
+
+sortAsc.addEventListener("click", () => {
+
+  let flexContainer = document.querySelector(
+    ".flexContainer"
+  ) as HTMLDivElement;
+  flexContainer.innerHTML = "";
+
+  let sortedItemsAsc = products.sort((a: Item, b: Item) => (a.sizeValue < b.sizeValue) ? -1 : 0);
+  
+  createHTMLProductlist(sortedItemsAsc);
+  sortAscending();
+  return createHTMLProductlist(sortedItemsAsc);
+
+
+})
+
+export function sortAscending () {
+
+  let sortedItemsAsc: Item[] = products.sort((a: Item, b: Item) => (a.sizeValue < b.sizeValue) ? -1 : 0);
+  return sortedItemsAsc;
 };
