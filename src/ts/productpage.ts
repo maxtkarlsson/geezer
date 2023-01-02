@@ -1,15 +1,14 @@
 //import { createHTMLCartpage } from "./cartpage";
-import { addToCart, getLocalStorage } from "./functions";
+import { getLocalStorage } from "./functions";
 import { Item } from "./models/item";
 import { products } from "./models/itemArray";
-import { cart } from "./functions";
 import { ShoppingCartItem } from "./models/ShoppingCartItem";
 import { createHTMLCartpage } from "./functions";
 import { createHTMLExtendedProductInfo } from "./productdetailspage";
 
 getLocalStorage();
 
-let cartFromLS: ShoppingCartItem[] = [];
+//let cartFromLS: ShoppingCartItem[] = [];
 
 //När vi pushar saker i listan
 //variabler i oliak filer som heter samma namn

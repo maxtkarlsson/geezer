@@ -3,9 +3,10 @@ import { Item } from "./models/item";
 import { products } from "./models/itemArray";
 //age";
 
-let cartFromLS: ShoppingCartItem[] = [];
+//let cartFromLS: ShoppingCartItem[] = [];
 
 function removeItem(product: ShoppingCartItem) {
+  let cart: ShoppingCartItem[] = getLocalStorage();
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].cartItem.articleNumber === product.cartItem.articleNumber) {
       cart.splice(i, 1);
@@ -18,7 +19,9 @@ function removeItem(product: ShoppingCartItem) {
 export function getLocalStorage(): ShoppingCartItem[] {
   let cart: ShoppingCartItem[] = [];
 
-  cartFromLS = JSON.parse(localStorage.getItem("cart") || "[]");
+  let cartFromLS: ShoppingCartItem[] = JSON.parse(
+    localStorage.getItem("cart") || "[]"
+  );
   //Map
   cart = cartFromLS.map((item) => {
     return new ShoppingCartItem(item.quantity, item.cartItem);
