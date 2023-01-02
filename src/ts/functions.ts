@@ -5,6 +5,11 @@ import { products } from "./models/itemArray";
 export let cart: ShoppingCartItem[] = []; //Samla sådana object i den listan
 export let cartFromLS: ShoppingCartItem[] = [];
 
+//När vi pushar saker i listan
+//variabler i oliak filer som heter samma namn
+//Flytta addtocart till product page, ha samma listor men de ska bara vara globala för en sida.
+
+//Vi måste ha en lista i denna funktionen, annars uppdateras den även om man rensrar lokalstolslddl
 export function addToCart(product: Item) {
   //Skapar ett shoppingCartItem med produkten vi klickat på.
   let newCartItem: ShoppingCartItem = new ShoppingCartItem(1, product);
@@ -28,7 +33,7 @@ export function addToCart(product: Item) {
 
   localStorage.setItem("cart", JSON.stringify(cart));
 }
-
+/*
 function decreaseQuantity(product: ShoppingCartItem) {
   for (let i = 0; i < cart.length; i++) {
     if (
@@ -47,7 +52,7 @@ function decreaseQuantity(product: ShoppingCartItem) {
       JSON.stringify(product.cartItem.title)
   );
 }
-
+*/
 function removeItem(product: ShoppingCartItem) {
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].cartItem.articleNumber === product.cartItem.articleNumber) {

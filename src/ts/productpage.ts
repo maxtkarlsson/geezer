@@ -7,11 +7,9 @@ import { ShoppingCartItem } from "./models/ShoppingCartItem";
 import { createHTMLCartpage } from "./functions";
 import { createHTMLExtendedProductInfo } from "./productdetailspage";
 
-
 //export let selectedItem:Item;
 
 //import { createHTMLCartpage } from "./cartpage"; BUG
-
 
 //let cart: ShoppingCartItem[] = []; //Samla sådana object i den listan
 
@@ -44,8 +42,6 @@ const sortDesc = (products: Item[], desc: boolean = true) => {
       return 0;
     }
   })*/
-
-
 
 /*
 
@@ -87,12 +83,6 @@ if (typeof retrievedItemsFromLS === "string") {
   
 }
 */
-
-
-
-
-
-
 
 //let cartItemsLS: ShoppingCart[] = [];
 
@@ -143,18 +133,18 @@ function createHTMLProductlist(products: Item[]) {
       //createHTMLCartpage(cartItemsLS); BUG*/
 
       addToCart(products[i]);
-      getLocalStorage();
+      //getLocalStorage();
       createHTMLCartpage(cart);
-      let count: HTMLButtonElement = document.getElementById("basketCount") as HTMLButtonElement;
+      let count: HTMLButtonElement = document.getElementById(
+        "basketCount"
+      ) as HTMLButtonElement;
       count.innerHTML = "" + cart.length;
       //createHTMLCartpage(cart);
-      
     });
 
     //Eventlistener for btn that takes you to product details
     productInfoBtn.value = products[i].articleNumber;
     productInfoBtn.addEventListener("click", () => {
-
       let currentItem = Object.keys(products[i]);
       console.log(currentItem);
       //selectedItem = products[i];
@@ -166,12 +156,11 @@ function createHTMLProductlist(products: Item[]) {
       //window.location.replace("/pages/productdetailspage.html");
     });
 
-    productInfoBtn.onclick = function(event: MouseEvent) {
+    productInfoBtn.onclick = function (event: MouseEvent) {
       if (productInfoBtn.id === products[i].articleNumber) {
-        createHTMLExtendedProductInfo(products[i])
+        createHTMLExtendedProductInfo(products[i]);
       }
-    }
-    
+    };
 
     //Adds id
 
@@ -209,14 +198,13 @@ function createHTMLProductlist(products: Item[]) {
 createHTMLProductlist(products);
 createHTMLCartpage(cart);
 
-
-let purchaseBtn = document.createElement("button")as HTMLButtonElement;
+let purchaseBtn = document.createElement("button") as HTMLButtonElement;
 purchaseBtn.classList.add("purchaseBtn");
 purchaseBtn.innerHTML = "Till betalning";
 let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;
 cartBody.appendChild(purchaseBtn);
 
-purchaseBtn.addEventListener("click", ()=>{
+purchaseBtn.addEventListener("click", () => {
   window.location.replace("/pages/checkoutpage.html");
 });
 /*
@@ -239,7 +227,9 @@ function sortList (products: Item[]) {
   
 }*/
 
-let sortDesc: HTMLDivElement= document.querySelector(".sortLToS") as HTMLDivElement;
+let sortDesc: HTMLDivElement = document.querySelector(
+  ".sortLToS"
+) as HTMLDivElement;
 /*sortDesc.addEventListener("click", () => {
   let sortedDesc = products.sort((a: Item, b: Item) => {
     let sizeValueOne: number = a.sizeValue;
@@ -255,7 +245,7 @@ let sortDesc: HTMLDivElement= document.querySelector(".sortLToS") as HTMLDivElem
   console.log(sortedDesc);
   });*/
 
-  //createHTMLProductlist(sortedDesc);
+//createHTMLProductlist(sortedDesc);
 /*
 sortDesc.onclick = function () {
   let sortedItemsDesc = products.sort((a: Item, b: Item) => (a.sizeValue > b.sizeValue) ? -1 : 1);
