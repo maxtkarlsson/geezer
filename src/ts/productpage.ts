@@ -76,11 +76,12 @@ function createHTMLProductlist(products: Item[]) {
     addBtn.addEventListener("click", () => {
       addToCart(products[i]);
       //getLocalStorage();
-      createHTMLCartpage();
+      
       let count: HTMLButtonElement = document.getElementById(
         "basketCount"
       ) as HTMLButtonElement;
       count.innerHTML = "" + cart.length;
+      createHTMLCartpage();
       //createHTMLCartpage(cart);
     });
 
@@ -134,12 +135,56 @@ function createHTMLProductlist(products: Item[]) {
     itemContainer.appendChild(anchorProductInfo);
     anchorProductInfo.appendChild(productInfoBtn);
   }
-  console.log("createHTMLProductlist has been run");
+  console.log("createHTMLProductlist has been run" + JSON.stringify(products));
 }
 
 createHTMLProductlist(products);
 createHTMLCartpage();
 
-let sortDesc: HTMLDivElement = document.querySelector(
-  ".sortLToS"
-) as HTMLDivElement;
+let purchaseBtn = document.createElement("button") as HTMLButtonElement;
+purchaseBtn.classList.add("purchaseBtn");
+purchaseBtn.innerHTML = "Till betalning";
+let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;
+cartBody.appendChild(purchaseBtn);
+
+purchaseBtn.addEventListener("click", () => {
+  window.location.replace("/pages/checkoutpage.html");
+});
+
+
+
+
+
+
+
+let sortContainer: HTMLDivElement = (document.querySelector(".sort") as HTMLDivElement);
+let sortDesc: HTMLButtonElement = document.querySelector(
+  "#sort-desc"
+) as HTMLButtonElement;
+sortDesc.innerHTML = "Sortera L - S";
+
+sortContainer.appendChild(sortDesc);
+
+
+sortDesc.addEventListener("click", () => {
+  
+  let sortedItemsDesc = products.sort((a: Item, b: Item) => (a.sizeValue > b.sizeValue) ? -1 : 1);
+  createHTMLProductlist(sortedItemsDesc);
+  //return sortedItemsDesc;
+  console.log(sortedItemsDesc);
+  //console.error(sortedItemsDesc);
+  
+  
+});
+
+
+/*
+function sortDescending(products: Item[]) {
+  let sortedItemsDesc = products.sort((a: Item, b: Item) => (a.sizeValue > b.sizeValue) ? -1 : 1);
+  //return sortedItemsDesc;
+  
+  console.log(sortedItemsDesc);
+
+
+};*/
+
