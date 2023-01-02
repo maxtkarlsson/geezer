@@ -129,9 +129,10 @@ export function sumCart (){
     cartSum.innerHTML = "Totalt:" + totalSum.toString() + "kr";
     cartBody.appendChild(cartSum);
     localStorage.setItem("cart", JSON.stringify(cart) || "[]");
-    console.log(totalSum);
+    
   }
   //return sumCart;
+  console.log(totalSum);
 }
 
 
