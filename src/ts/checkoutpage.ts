@@ -1,3 +1,88 @@
+import { createHTMLCartpage } from "./functions";
+import { ShoppingCartItem } from "./models/ShoppingCartItem";
+import { getLocalStorage } from "./functions";
+
+let container = document.querySelector(".flexContainer") as HTMLDivElement;
+//let container = document.getElementById("#checkoutContainer")as HTMLDivElement;
+
+
+
+function createHTMLPurchasedItems() {
+    let cart: ShoppingCartItem[] = getLocalStorage();
+    for (let i = 0; i < cart.length; i++) {
+      //Creates the HTML elements we need:
+      let itemContainer = document.createElement("div") as HTMLDivElement;
+      let itemImg = document.createElement("img") as HTMLImageElement;
+      let itemTitle = document.createElement("h1") as HTMLHeadElement;
+      let itemPrice = document.createElement("p") as HTMLParagraphElement;
+      let itemQuantity = document.createElement("p") as HTMLParagraphElement;
+  /*
+      let purchaseBtn = document.createElement("button") as HTMLButtonElement; /////
+      let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;///////
+  
+  */
+  
+      //Adds classes to the elements:
+      itemContainer.classList.add("itemCardCheckout--small");
+      itemImg.classList.add("itemCardCheckout__image--small");
+      itemTitle.classList.add("itemCardCheckout__title--small");
+      itemPrice.classList.add("itemCardCheckout__price--small");
+      itemQuantity.classList.add("itemCardCheckout__quantity--small");
+      //purchaseBtn.classList.add("purchaseBtn"); //////
+  
+  
+    
+  
+      //Adds content to the elements
+      itemImg.src = cart[i].cartItem.imageUrl;
+      itemImg.alt = "";
+      itemTitle.innerText = cart[i].cartItem.title;
+      itemPrice.innerText = cart[i].cartItem.price.toString() + " kr";
+      itemQuantity.innerText = "Antal: " + cart[i].quantity.toString();
+     // purchaseBtn.innerHTML = "Till betalning"; /////
+  
+      //Adds elements to page
+      itemContainer.appendChild(itemImg);
+      itemContainer.appendChild(itemTitle);
+      itemContainer.appendChild(itemPrice);
+      itemContainer.appendChild(itemQuantity);
+
+      container.appendChild(itemContainer);
+     // cartBody.appendChild(purchaseBtn); ///////
+    }
+    sumCart(); ///////////////////Ska denna verkligen vara här?? Tar inte ändringar om flera i quntity eller delete i cart
+  }
+  
+  export function sumCart (){
+    let totalSum:number = 0;
+    let cart: ShoppingCartItem[] = getLocalStorage();
+    console.log("sumcart has been run");
+    
+    let cartSum = document.createElement("p")as HTMLParagraphElement;
+    let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;
+    for (let i=0;i<cart.length;i++){
+      totalSum += cart[i].cartItem.price * cart[i].quantity;
+      cartSum.innerHTML = "Totalt:" + totalSum.toString() + "kr";
+      container.appendChild(cartSum);
+      localStorage.setItem("cart", JSON.stringify(cart) || "[]");
+      cart
+      
+    }
+    //return sumCart;
+    console.log(totalSum);
+  }
+  
+
+createHTMLPurchasedItems();
+  
+  
+  
+  
+
+
+
+//////////////////
+
 let formContainer = document.createElement("div")as HTMLDivElement;
 
 let form = document.createElement("form")as HTMLFormElement;
@@ -49,7 +134,8 @@ paymentContainer.appendChild(payWithSwish);
 formContainer.appendChild(form);
 //document.body.appendChild(anchorConfirmationPage);
 formContainer.appendChild(payBtn);
-document.body.appendChild(formContainer);
+//document.body.appendChild(formContainer);
+container.appendChild(formContainer)
 
 payBtn.addEventListener("click", ()=>{
     window.location.replace("/src/pages/confirmationpage.html");
