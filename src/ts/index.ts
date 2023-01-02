@@ -1,9 +1,8 @@
-/*
+
 import { createHTMLCartpage } from "./functions";
-import { cart, getLocalStorage } from "./functions";
-*/
+
 //getLocalStorage();
-//createHTMLCartpage(cart);
+createHTMLCartpage();
 
 let purchaseBtn = document.createElement("button") as HTMLButtonElement;
 purchaseBtn.classList.add("purchaseBtn");
