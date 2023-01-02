@@ -125,7 +125,7 @@ export function sumCart (){
   let cartSum = document.createElement("p")as HTMLParagraphElement;
   let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;
   for (let i=0;i<cart.length;i++){
-    totalSum += cart[i].cartItem.price * cart[i].cartItem.quantity;
+    totalSum += cart[i].cartItem.price * cart[i].quantity;
     cartSum.innerHTML = "Totalt:" + totalSum.toString() + "kr";
     cartBody.appendChild(cartSum);
     localStorage.setItem("cart", JSON.stringify(cart) || "[]");
