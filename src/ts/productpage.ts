@@ -108,7 +108,7 @@ function createHTMLProductlist(products: Item[]) {
     //Adds id
 
     //Adds content to the elements
-    itemImg.src = products[i].imageUrl;
+    itemImg.src = products[i].imageUrlLarge;
     itemImg.alt = "";
     itemTitle.innerText = products[i].title;
     itemDesc.innerText = products[i].desc;
