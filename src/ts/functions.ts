@@ -44,6 +44,12 @@ export function createHTMLCartpage() {
     let itemQuantity = document.createElement("p") as HTMLParagraphElement;
     let increaseBtn = document.createElement("button") as HTMLButtonElement;
     let decreaseBtn = document.createElement("button") as HTMLButtonElement;
+    let deleteBtn = document.createElement("button") as HTMLButtonElement;
+
+    let purchaseBtn = document.createElement("button") as HTMLButtonElement; /////
+    let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;///////
+
+
 
     //Adds classes to the elements:
     itemContainer.classList.add("itemCard--small");
@@ -53,9 +59,16 @@ export function createHTMLCartpage() {
     itemQuantity.classList.add("itemCard__quantity--small");
     increaseBtn.classList.add("itemCard__increaseBtn");
     decreaseBtn.classList.add("itemCard__decreaseBtn");
+    deleteBtn.classList.add("itemCard__deleteBtn");
+    purchaseBtn.classList.add("purchaseBtn"); //////
 
     //Adds eventlistener to buttons
-    increaseBtn.addEventListener("click", () => {});
+    increaseBtn.addEventListener("click", () => {
+      cart[i].quantity++;
+      localStorage.setItem("cart", JSON.stringify(cart) || "[]");
+      createHTMLCartpage();
+    });
+
     decreaseBtn.addEventListener("click", () => {
       console.log("decreaseBtn clicked.");
       cart[i].quantity--;
@@ -70,6 +83,15 @@ export function createHTMLCartpage() {
       createHTMLCartpage();
     });
 
+    deleteBtn.addEventListener("click", () => {
+      removeItem(cart[i]);
+      createHTMLCartpage();
+    });
+
+    purchaseBtn.addEventListener("click", () => {
+      window.location.replace("/pages/checkoutpage.html");
+    });
+
     //Adds content to the elements
     itemImg.src = cart[i].cartItem.imageUrl;
     itemImg.alt = "";
@@ -78,6 +100,8 @@ export function createHTMLCartpage() {
     itemQuantity.innerText = "Antal: " + cart[i].quantity.toString();
     increaseBtn.innerText = "+";
     decreaseBtn.innerText = "-";
+    deleteBtn.innerText = "X";
+    purchaseBtn.innerHTML = "Till betalning"; /////
 
     //Adds elements to page
     itemContainer.appendChild(itemImg);
@@ -86,6 +110,8 @@ export function createHTMLCartpage() {
     itemContainer.appendChild(itemQuantity);
     itemContainer.appendChild(decreaseBtn);
     itemContainer.appendChild(increaseBtn);
+    itemContainer.appendChild(deleteBtn);
     cartContainer.appendChild(itemContainer);
+    cartBody.appendChild(purchaseBtn); ///////
   }
 }
