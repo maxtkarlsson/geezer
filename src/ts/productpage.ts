@@ -9,8 +9,7 @@ import { createHTMLExtendedProductInfo } from "./productdetailspage";
 
 getLocalStorage();
 
-export let cart: ShoppingCartItem[] = []; //Samla sådana object i den listan
-export let cartFromLS: ShoppingCartItem[] = [];
+let cartFromLS: ShoppingCartItem[] = [];
 
 //När vi pushar saker i listan
 //variabler i oliak filer som heter samma namn
@@ -18,6 +17,10 @@ export let cartFromLS: ShoppingCartItem[] = [];
 
 //Vi måste ha en lista i denna funktionen, annars uppdateras den även om man rensrar lokalstolslddl
 export function addToCart(product: Item) {
+  let cart: ShoppingCartItem[] = []; //Samla sådana object i den listan
+  //Plockar från localstorage:
+  cart = getLocalStorage();
+
   //Skapar ett shoppingCartItem med produkten vi klickat på.
   let newCartItem: ShoppingCartItem = new ShoppingCartItem(1, product);
 
@@ -29,6 +32,7 @@ export function addToCart(product: Item) {
   //loggar ut antingen true(produkten finns i cart) eller false(finns inte)
   console.log(containsProduct);
 
+  //Måste ändra denna funktion?
   if (containsProduct === true) {
     for (let i = 0; i < cart.length; i++) {
       if (newCartItem.cartItem.articleNumber === cart[i].cartItem.articleNumber)

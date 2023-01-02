@@ -1,6 +1,9 @@
 import { ShoppingCartItem } from "./models/ShoppingCartItem";
 import { Item } from "./models/item";
 import { products } from "./models/itemArray";
+//age";
+
+let cartFromLS: ShoppingCartItem[] = [];
 
 function removeItem(product: ShoppingCartItem) {
   for (let i = 0; i < cart.length; i++) {
@@ -12,13 +15,15 @@ function removeItem(product: ShoppingCartItem) {
   console.log("Function removeItem run.");
 }
 
-export function getLocalStorage() {
+export function getLocalStorage(): ShoppingCartItem[] {
+  let cart: ShoppingCartItem[] = [];
+
   cartFromLS = JSON.parse(localStorage.getItem("cart") || "[]");
   //Map
   cart = cartFromLS.map((item) => {
     return new ShoppingCartItem(item.quantity, item.cartItem);
   });
-  console.log(cart);
+  return cart;
 }
 
 export function createHTMLCartpage(cart: ShoppingCartItem[]) {
