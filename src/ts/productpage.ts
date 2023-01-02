@@ -167,11 +167,18 @@ sortContainer.appendChild(sortDesc);
 
 
 sortDesc.addEventListener("click", () => {
+  let flexContainer = document.querySelector(
+    ".flexContainer"
+  ) as HTMLDivElement;
+  flexContainer.innerHTML = "";
   
   let sortedItemsDesc = products.sort((a: Item, b: Item) => (a.sizeValue > b.sizeValue) ? -1 : 1);
+
   createHTMLProductlist(sortedItemsDesc);
   //return sortedItemsDesc;
   console.log(sortedItemsDesc);
+  sortDescending();
+  return createHTMLProductlist(sortedItemsDesc);
   //console.error(sortedItemsDesc);
   
   
@@ -188,3 +195,11 @@ function sortDescending(products: Item[]) {
 
 };*/
 
+export function sortDescending () {
+
+  let sortedItemsDesc: Item[] = products.sort((a: Item, b: Item) => (a.sizeValue > b.sizeValue) ? -1 : 1);
+  return sortedItemsDesc;
+
+
+
+};
