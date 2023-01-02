@@ -46,6 +46,11 @@ export function createHTMLCartpage() {
     let decreaseBtn = document.createElement("button") as HTMLButtonElement;
     let deleteBtn = document.createElement("button") as HTMLButtonElement;
 
+    let purchaseBtn = document.createElement("button") as HTMLButtonElement; /////
+    let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;///////
+
+
+
     //Adds classes to the elements:
     itemContainer.classList.add("itemCard--small");
     itemImg.classList.add("itemCard__image--small");
@@ -55,6 +60,7 @@ export function createHTMLCartpage() {
     increaseBtn.classList.add("itemCard__increaseBtn");
     decreaseBtn.classList.add("itemCard__decreaseBtn");
     deleteBtn.classList.add("itemCard__deleteBtn");
+    purchaseBtn.classList.add("purchaseBtn"); //////
 
     //Adds eventlistener to buttons
     increaseBtn.addEventListener("click", () => {
@@ -82,6 +88,10 @@ export function createHTMLCartpage() {
       createHTMLCartpage();
     });
 
+    purchaseBtn.addEventListener("click", () => {
+      window.location.replace("/pages/checkoutpage.html");
+    });
+
     //Adds content to the elements
     itemImg.src = cart[i].cartItem.imageUrl;
     itemImg.alt = "";
@@ -91,6 +101,7 @@ export function createHTMLCartpage() {
     increaseBtn.innerText = "+";
     decreaseBtn.innerText = "-";
     deleteBtn.innerText = "X";
+    purchaseBtn.innerHTML = "Till betalning"; /////
 
     //Adds elements to page
     itemContainer.appendChild(itemImg);
@@ -101,5 +112,6 @@ export function createHTMLCartpage() {
     itemContainer.appendChild(increaseBtn);
     itemContainer.appendChild(deleteBtn);
     cartContainer.appendChild(itemContainer);
+    cartBody.appendChild(purchaseBtn); ///////
   }
 }
