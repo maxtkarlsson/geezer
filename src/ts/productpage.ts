@@ -108,7 +108,7 @@ function createHTMLProductlist(products: Item[]) {
     //Adds id
 
     //Adds content to the elements
-    itemImg.src = products[i].imageUrl;
+    itemImg.src = products[i].imageUrlLarge;
     itemImg.alt = "";
     itemTitle.innerText = products[i].title;
     itemDesc.innerText = products[i].desc;
@@ -141,6 +141,7 @@ function createHTMLProductlist(products: Item[]) {
 createHTMLProductlist(products);
 createHTMLCartpage();
 
+/*
 let purchaseBtn = document.createElement("button") as HTMLButtonElement;
 purchaseBtn.classList.add("purchaseBtn");
 purchaseBtn.innerHTML = "Till betalning";
@@ -150,7 +151,7 @@ cartBody.appendChild(purchaseBtn);
 purchaseBtn.addEventListener("click", () => {
   window.location.replace("/pages/checkoutpage.html");
 });
-
+*/
 
 
 
