@@ -29,7 +29,8 @@ export function getLocalStorage(): ShoppingCartItem[] {
   return cart;
 }
 
-export function createHTMLCartpage(cart: ShoppingCartItem[]) {
+export function createHTMLCartpage() {
+  let cart: ShoppingCartItem[] = getLocalStorage();
   let cartContainer = document.querySelector(
     ".offcanvas-body"
   ) as HTMLDivElement;
@@ -66,7 +67,7 @@ export function createHTMLCartpage(cart: ShoppingCartItem[]) {
 
       //decreaseQuantity(cart[i]);
       //getLocalStorage(); //setta local
-      createHTMLCartpage(cart);
+      createHTMLCartpage();
     });
 
     //Adds content to the elements

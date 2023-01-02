@@ -45,6 +45,8 @@ export function addToCart(product: Item) {
 }
 
 function createHTMLProductlist(products: Item[]) {
+  let cart: ShoppingCartItem[] = getLocalStorage();
+
   for (let i = 0; i < products.length; i++) {
     //Creates the HTML elements we need:
     let itemContainer = document.createElement("div") as HTMLDivElement;
@@ -74,7 +76,7 @@ function createHTMLProductlist(products: Item[]) {
     addBtn.addEventListener("click", () => {
       addToCart(products[i]);
       //getLocalStorage();
-      createHTMLCartpage(cart);
+      createHTMLCartpage();
       let count: HTMLButtonElement = document.getElementById(
         "basketCount"
       ) as HTMLButtonElement;
@@ -136,7 +138,7 @@ function createHTMLProductlist(products: Item[]) {
 }
 
 createHTMLProductlist(products);
-createHTMLCartpage(cart);
+createHTMLCartpage();
 
 let purchaseBtn = document.createElement("button") as HTMLButtonElement;
 purchaseBtn.classList.add("purchaseBtn");
