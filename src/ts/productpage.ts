@@ -147,10 +147,7 @@ createHTMLCartpage();
 
 
 
-let flexContainer = document.querySelector(
-  ".flexContainer"
-) as HTMLDivElement;
-flexContainer.innerHTML = "";
+
 let sortContainer: HTMLDivElement = (document.querySelector(".sort") as HTMLDivElement);
 let sortDesc: HTMLButtonElement = document.querySelector(
   "#sort-desc"
