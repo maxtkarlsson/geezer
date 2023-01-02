@@ -2,38 +2,6 @@ import { ShoppingCartItem } from "./models/ShoppingCartItem";
 import { Item } from "./models/item";
 import { products } from "./models/itemArray";
 
-export let cart: ShoppingCartItem[] = []; //Samla sådana object i den listan
-export let cartFromLS: ShoppingCartItem[] = [];
-
-//När vi pushar saker i listan
-//variabler i oliak filer som heter samma namn
-//Flytta addtocart till product page, ha samma listor men de ska bara vara globala för en sida.
-
-//Vi måste ha en lista i denna funktionen, annars uppdateras den även om man rensrar lokalstolslddl
-export function addToCart(product: Item) {
-  //Skapar ett shoppingCartItem med produkten vi klickat på.
-  let newCartItem: ShoppingCartItem = new ShoppingCartItem(1, product);
-
-  //Kollar om artikelnr redan finns i vår cart
-  const containsProduct = cart.some((cart) => {
-    return cart.cartItem.articleNumber == product.articleNumber;
-  });
-
-  //loggar ut antingen true(produkten finns i cart) eller false(finns inte)
-  console.log(containsProduct);
-
-  if (containsProduct === true) {
-    for (let i = 0; i < cart.length; i++) {
-      if (newCartItem.cartItem.articleNumber === cart[i].cartItem.articleNumber)
-        cart[i].quantity = cart[i].quantity + 1;
-    }
-  } else {
-    cart.push(newCartItem);
-  }
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
-
 function removeItem(product: ShoppingCartItem) {
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].cartItem.articleNumber === product.cartItem.articleNumber) {
