@@ -7,84 +7,7 @@ import { ShoppingCartItem } from "./models/ShoppingCartItem";
 import { createHTMLCartpage } from "./functions";
 import { createHTMLExtendedProductInfo } from "./productdetailspage";
 
-//export let selectedItem:Item;
-
-//import { createHTMLCartpage } from "./cartpage"; BUG
-
-//let cart: ShoppingCartItem[] = []; //Samla sådana object i den listan
-
-//let cartFromLS: ShoppingCartItem[] = [];
-//let cartItemsLS: ShoppingCartItem[] = [];
-/*
-const sortDesc: HTMLButtonElement = document.getElementById("#sort-desc") as HTMLButtonElement;
-sortDesc.addEventListener("click", () => {
-  let sortedItemsDesc= products.sort((a: Item, b: Item) => (a.sizeValue > b.sizeValue) ? -1 : 1); // Sorts items from size large to small
-  console.log(JSON.stringify(sortedItemsDesc));
-});*/
-
-// Sort desc
-/*let sortedItemsDesc= products.sort((a: Item, b: Item) => (a.sizeValue > b.sizeValue) ? -1 : 1); // Sorts items from size large to small
-console.log(JSON.stringify(sortedItemsDesc));*/
-
-// sort asc
-/*
-let sortedItemsAsc = products.sort((a: Item, b: Item) => (a.sizeValue < b.sizeValue) ? -1 : 0);
-console.log(JSON.stringify(sortedItemsAsc));
-*/
-
-/*
-const sortDesc = (products: Item[], desc: boolean = true) => {
-  return products.sort((a: Item, b: Item) => {
-    if (desc) {
-      if (a.sizeValue > b.sizeValue) return 1;
-      if (a.sizeValue < b.sizeValue) return -1;
-
-      return 0;
-    }
-  })*/
-
-/*
-
-function sortProductsAsc (products: Item[]) {
-  products.sort((a: Item, b: Item) => (a.sizeValue < b.sizeValue) ? 1: -1);
-};*/
-
-//let cart = new ShoppingCartItem (0, []);
-
 getLocalStorage();
-/*
-function addToCart(product:Item){
-
-  let r = cart.itemList.push(product);
-
-  //console.log(r);
-
-}*/
-/*
-let cartItemsLS: ShoppingCart[] = [];
-/*let retrievedItemsFromLS = localStorage.getItem("itemsToLS");
-JSON.parse(localStorage.getItem("itemsToLS") || "[{}]");
-console.log(retrievedItemsFromLS);
-JSON.stringify(retrievedItemsFromLS);*/
-/*
-export function retrieveCartItemsFromLS(): ShoppingCart[] {
-  cartItemsLS = JSON.parse(localStorage.getItem("itemsToLS") || "{}");
-  let cartItems = cartItemsLS.map((painting)) => {
-    return new ShoppingCart()
-  }
-}
-*/
-/*
-if (typeof retrievedItemsFromLS === "string") {
-  const paintings = JSON.parse(retrievedItemsFromLS);
-  JSON.parse(localStorage.getItem("itemsToLS") || "{}");
-  console.log(paintings);
- 
-  
-}
-*/
-
-//let cartItemsLS: ShoppingCart[] = [];
 
 function createHTMLProductlist(products: Item[]) {
   for (let i = 0; i < products.length; i++) {
@@ -114,24 +37,6 @@ function createHTMLProductlist(products: Item[]) {
 
     //Eventlistener for adding to cart
     addBtn.addEventListener("click", () => {
-      //addToCart(products[i]);
-      /*const cartItem: ShoppingCartItem = new ShoppingCartItem(1, products[i]);
-      
-
-    
-      cartItemsLS.push(cartItem);
-      //cartItemsLS.push(products[i]);
-      localStorage.setItem("itemsToLS", JSON.stringify(cartItemsLS) || "");
-      //console.log(products[i]);
-      console.log(cartItemsLS);
-      
-      let cartItems = cartItemsLS.map((itemInCart) => {
-        return new ShoppingCartItem(itemInCart.quantity, itemInCart.cartItem);
-        
-      }); 
-      return cartItemsLS;
-      //createHTMLCartpage(cartItemsLS); BUG*/
-
       addToCart(products[i]);
       //getLocalStorage();
       createHTMLCartpage(cart);
@@ -207,50 +112,7 @@ cartBody.appendChild(purchaseBtn);
 purchaseBtn.addEventListener("click", () => {
   window.location.replace("/pages/checkoutpage.html");
 });
-/*
-let sortDesc: HTMLButtonElement = document.getElementById("sort-desc") as HTMLButtonElement;
-sortDesc.addEventListener("click", () => {
-  
-  let sortListToDesc = sortList(products);
-  createHTMLProductlist(sortListToDesc);
-}); */
-/*
-sortDesc.addEventListener("click", () => {
-  products.sort((a: Item, b: Item) => (a.sizeValue > b.sizeValue) ? -1 : 1); // Sorts items from size large to small
-  console.log(products);
-});*/
-/*
-function sortList (products: Item[]) {
-  let sortedDesc = products.sort((a: Item, b: Item) => (a.sizeValue > b.sizeValue) ? -1 : 1); // Sorts items from size large to small
-  console.log("sortlist function has been run");
-  return sortedDesc;
-  
-}*/
 
 let sortDesc: HTMLDivElement = document.querySelector(
   ".sortLToS"
 ) as HTMLDivElement;
-/*sortDesc.addEventListener("click", () => {
-  let sortedDesc = products.sort((a: Item, b: Item) => {
-    let sizeValueOne: number = a.sizeValue;
-    let sizeValueTwo: number = b.sizeValue;
-    if(sizeValueOne > sizeValueTwo) {
-      return -1;
-    }
-
-  
-    createHTMLProductlist(sortedDesc);
-  }); 
-  createHTMLProductlist(sortedDesc);
-  console.log(sortedDesc);
-  });*/
-
-//createHTMLProductlist(sortedDesc);
-/*
-sortDesc.onclick = function () {
-  let sortedItemsDesc = products.sort((a: Item, b: Item) => (a.sizeValue > b.sizeValue) ? -1 : 1);
-  
-
-  
-  return createHTMLProductlist(sortedItemsDesc);
-};*/

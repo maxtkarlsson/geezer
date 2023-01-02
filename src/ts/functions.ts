@@ -33,26 +33,7 @@ export function addToCart(product: Item) {
 
   localStorage.setItem("cart", JSON.stringify(cart));
 }
-/*
-function decreaseQuantity(product: ShoppingCartItem) {
-  for (let i = 0; i < cart.length; i++) {
-    if (
-      cart[i].cartItem.articleNumber === product.cartItem.articleNumber &&
-      cart[i].quantity > 1
-    ) {
-      cart[i].quantity = cart[i].quantity - 1;
-    } else {
-      removeItem(product);
-    }
-  }
 
-  localStorage.setItem("cart", JSON.stringify(cart));
-  console.log(
-    "Function decreaseQuantity run with product:" +
-      JSON.stringify(product.cartItem.title)
-  );
-}
-*/
 function removeItem(product: ShoppingCartItem) {
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].cartItem.articleNumber === product.cartItem.articleNumber) {
@@ -131,10 +112,3 @@ export function createHTMLCartpage(cart: ShoppingCartItem[]) {
     cartContainer.appendChild(itemContainer);
   }
 }
-
-/*
-  export function createHTMLExtendedProductInfo(product: Item) {
-    let selectedItem: Item = new Item(products[i].articleNumber,products[i].title,products[i].imageUrl, products[i].imageUrlLarge, products[i].desc,products[i].descLong, products[i].price, products[i].size, products[i].sizeValue, products[i].infoBtn,products[i].addBtn, products[i].quantity);
-
-  
-  }*/
