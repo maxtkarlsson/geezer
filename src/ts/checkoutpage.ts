@@ -5,127 +5,113 @@ import { getLocalStorage } from "./functions";
 let container = document.querySelector(".flexContainer") as HTMLDivElement;
 //let container = document.getElementById("#checkoutContainer")as HTMLDivElement;
 
-
-
 function createHTMLPurchasedItems() {
-    let cart: ShoppingCartItem[] = getLocalStorage();
-    for (let i = 0; i < cart.length; i++) {
-      //Creates the HTML elements we need:
-      let itemContainer = document.createElement("div") as HTMLDivElement;
-      let itemImg = document.createElement("img") as HTMLImageElement;
-      let itemTitle = document.createElement("h1") as HTMLHeadElement;
-      let itemPrice = document.createElement("p") as HTMLParagraphElement;
-      let itemQuantity = document.createElement("p") as HTMLParagraphElement;
-  /*
+  let cart: ShoppingCartItem[] = getLocalStorage();
+  for (let i = 0; i < cart.length; i++) {
+    //Creates the HTML elements we need:
+    let itemContainer = document.createElement("div") as HTMLDivElement;
+    let itemImg = document.createElement("img") as HTMLImageElement;
+    let itemTitle = document.createElement("h1") as HTMLHeadElement;
+    let itemPrice = document.createElement("p") as HTMLParagraphElement;
+    let itemQuantity = document.createElement("p") as HTMLParagraphElement;
+    /*
       let purchaseBtn = document.createElement("button") as HTMLButtonElement; /////
       let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;///////
   
   */
-  
-      //Adds classes to the elements:
-      itemContainer.classList.add("itemCardCheckout--small");
-      itemImg.classList.add("itemCardCheckout__image--small");
-      itemTitle.classList.add("itemCardCheckout__title--small");
-      itemPrice.classList.add("itemCardCheckout__price--small");
-      itemQuantity.classList.add("itemCardCheckout__quantity--small");
-      //purchaseBtn.classList.add("purchaseBtn"); //////
-  
-  
-    
-  
-      //Adds content to the elements
-      itemImg.src = cart[i].cartItem.imageUrl;
-      itemImg.alt = "";
-      itemTitle.innerText = cart[i].cartItem.title;
-      itemPrice.innerText = cart[i].cartItem.price.toString() + " kr";
-      itemQuantity.innerText = "Antal: " + cart[i].quantity.toString();
-     // purchaseBtn.innerHTML = "Till betalning"; /////
-  
-      //Adds elements to page
-      itemContainer.appendChild(itemImg);
-      itemContainer.appendChild(itemTitle);
-      itemContainer.appendChild(itemPrice);
-      itemContainer.appendChild(itemQuantity);
 
-      container.appendChild(itemContainer);
-     // cartBody.appendChild(purchaseBtn); ///////
-    }
-    sumCart(); ///////////////////Ska denna verkligen vara här?? Tar inte ändringar om flera i quntity eller delete i cart
+    //Adds classes to the elements:
+    itemContainer.classList.add("itemCardCheckout--small");
+    itemImg.classList.add("itemCardCheckout__image--small");
+    itemTitle.classList.add("itemCardCheckout__title--small");
+    itemPrice.classList.add("itemCardCheckout__price--small");
+    itemQuantity.classList.add("itemCardCheckout__quantity--small");
+    //purchaseBtn.classList.add("purchaseBtn"); //////
+
+    //Adds content to the elements
+    itemImg.src = cart[i].cartItem.imageUrl;
+    itemImg.alt = "";
+    itemTitle.innerText = cart[i].cartItem.title;
+    itemPrice.innerText = cart[i].cartItem.price.toString() + " kr";
+    itemQuantity.innerText = "Antal: " + cart[i].quantity.toString();
+    // purchaseBtn.innerHTML = "Till betalning"; /////
+
+    //Adds elements to page
+    itemContainer.appendChild(itemImg);
+    itemContainer.appendChild(itemTitle);
+    itemContainer.appendChild(itemPrice);
+    itemContainer.appendChild(itemQuantity);
+
+    container.appendChild(itemContainer);
+    // cartBody.appendChild(purchaseBtn); ///////
   }
-  
-  export function sumCart (){
-    let totalSum:number = 0;
-    let cart: ShoppingCartItem[] = getLocalStorage();
-    console.log("sumcart has been run");
-    
-    let cartSum = document.createElement("p")as HTMLParagraphElement;
+  sumCart(); ///////////////////Ska denna verkligen vara här?? Tar inte ändringar om flera i quntity eller delete i cart
+}
+
+export function sumCart() {
+  let totalSum: number = 0;
+  let cart: ShoppingCartItem[] = getLocalStorage();
+  console.log("sumcart has been run");
+
+  let cartSum = document.createElement("p") as HTMLParagraphElement;
+  container.appendChild(cartSum);
+  //let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;
+  for (let i = 0; i < cart.length; i++) {
+    totalSum += cart[i].cartItem.price * cart[i].quantity;
+    cartSum.innerHTML = "Totalt:" + totalSum.toString() + "kr";
     container.appendChild(cartSum);
-    //let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;
-    for (let i=0;i<cart.length;i++){
-      totalSum += cart[i].cartItem.price * cart[i].quantity;
-      cartSum.innerHTML = "Totalt:" + totalSum.toString() + "kr";
-      container.appendChild(cartSum);
-      localStorage.setItem("cart", JSON.stringify(cart) || "[]");
-      cart
-      
-    }
-    //return sumCart;
-    console.log(totalSum);
+    localStorage.setItem("cart", JSON.stringify(cart) || "[]");
+    cart;
   }
-  
+  //return sumCart;
+  console.log(totalSum);
+}
 
 createHTMLPurchasedItems();
-  
-  
-  
-  
-
-
 
 //////////////////
 
-let formContainer = document.createElement("div")as HTMLDivElement;
+let formContainer = document.createElement("div") as HTMLDivElement;
 
-let form = document.createElement("form")as HTMLFormElement;
-let firstnameInput = document.createElement("input")as HTMLInputElement;
+let form = document.createElement("form") as HTMLFormElement;
+let firstnameInput = document.createElement("input") as HTMLInputElement;
 firstnameInput.setAttribute("type", "text");
 firstnameInput.setAttribute("placeholder", "Förnamn");
-let lastnameInput = document.createElement("input")as HTMLInputElement;
-lastnameInput.setAttribute("type", "text")
+let lastnameInput = document.createElement("input") as HTMLInputElement;
+lastnameInput.setAttribute("type", "text");
 lastnameInput.setAttribute("placeholder", "Efternamn");
-let phoneInput = document.createElement("input")as HTMLInputElement;
+let phoneInput = document.createElement("input") as HTMLInputElement;
 phoneInput.setAttribute("type", "number");
 phoneInput.setAttribute("placeholder", "Telefonnummer");
 
-
-
-
-let paymentContainer = document.createElement("div")as HTMLDivElement;
+let paymentContainer = document.createElement("div") as HTMLDivElement;
 let cardRadio = document.createElement("input") as HTMLInputElement;
 cardRadio.setAttribute("type", "radio");
 cardRadio.setAttribute("name", "payment");
 let payWithCard = document.createElement("p") as HTMLParagraphElement;
-payWithCard.innerHTML="Betala med kort";
-let cardInput = document.createElement("input")as HTMLInputElement;
+payWithCard.innerHTML = "Betala med kort";
+let cardInput = document.createElement("input") as HTMLInputElement;
 cardInput.setAttribute("type", "number");
 cardInput.setAttribute("placeholder", "Kortnummer");
 //cardInput.setAttribute("id", "cardId");
 payWithCard.appendChild(cardInput);
 let swishRadio = document.createElement("input") as HTMLInputElement;
 let payWithSwish = document.createElement("p") as HTMLParagraphElement;
-payWithSwish.innerHTML="Betala med swish";
+payWithSwish.innerHTML = "Betala med swish";
 swishRadio.setAttribute("type", "radio");
 swishRadio.setAttribute("name", "payment");
-let swishInput = document.createElement("input")as HTMLInputElement;
+let swishInput = document.createElement("input") as HTMLInputElement;
 swishInput.setAttribute("type", "number");
 swishInput.setAttribute("placeholder", "Telefonnummer");
 //swishInput.setAttribute("id", "swishId");
 payWithSwish.appendChild(swishInput);
 
-let anchorConfirmationPage = document.createElement("anchor")as HTMLAnchorElement;
+let anchorConfirmationPage = document.createElement(
+  "anchor"
+) as HTMLAnchorElement;
 anchorConfirmationPage.setAttribute("url", "/src/pages/confirmationpage.html");
 let payBtn = document.createElement("button") as HTMLButtonElement;
-payBtn.innerHTML="Betala";
+payBtn.innerHTML = "Betala";
 
 //Adds classes to elements
 formContainer.classList.add("formContainer");
@@ -145,7 +131,7 @@ form.appendChild(phoneInput);
 form.appendChild(paymentContainer);
 paymentContainer.appendChild(cardRadio);
 paymentContainer.appendChild(payWithCard);
-paymentContainer.appendChild(swishRadio)
+paymentContainer.appendChild(swishRadio);
 paymentContainer.appendChild(payWithSwish);
 //form.appendChild(payWithSwish)
 
@@ -153,30 +139,29 @@ container.appendChild(form);
 //document.body.appendChild(anchorConfirmationPage);
 formContainer.appendChild(payBtn);
 //document.body.appendChild(formContainer);
-container.appendChild(formContainer)
+container.appendChild(formContainer);
 
-payBtn.addEventListener("click", ()=>{
-    window.location.replace("/src/pages/confirmationpage.html");
-})
+payBtn.addEventListener("click", () => {
+  window.location.replace("/src/pages/confirmationpage.html");
+});
 
 cardRadio.addEventListener("click", () => {
-  if (cardRadio.checked = true) {
+  if ((cardRadio.checked = true)) {
     //let swishInput = document.createElement("input")as HTMLInputElement;
-    cardInput.classList.remove("input__card--hidden"); 
-    cardInput.classList.add("input__card--show"); 
+    cardInput.classList.remove("input__card--hidden");
+    cardInput.classList.add("input__card--show");
+    swishInput.classList.add("input__swish--hidden");
+    swishInput.classList.remove("input__swish--show");
   }
-  else {
-    cardInput.classList.remove("input__card--show"); 
-    cardInput.classList.add("input__card--hidden");
-  }
-    
-})
+});
 
-swishRadio.addEventListener ("click", () => {
-  if (swishInput.checked = true) {
-    cardInput.checked=false;
-    swishInput.classList.remove("input__swish--hidden"); 
-    swishInput.classList.add("input__swish--show"); 
+swishRadio.addEventListener("click", () => {
+  if ((swishInput.checked = true)) {
+    //cardInput.checked = false;
+    cardInput.classList.remove("input__card--show");
+    cardInput.classList.add("input__card--hidden");
+    swishInput.classList.remove("input__swish--hidden");
+    swishInput.classList.add("input__swish--show");
   }
 
   /*
@@ -185,9 +170,3 @@ swishRadio.addEventListener ("click", () => {
   swishInput.setAttribute("placeholder", "Telefonnummer");
   const isHidden = swishInput.style.display === "none";*/
 });
-
-
-
-
-
-
