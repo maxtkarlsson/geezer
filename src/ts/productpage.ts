@@ -157,24 +157,145 @@ let sortDesc: HTMLButtonElement = document.querySelector(
 ) as HTMLButtonElement;
 let sortAsc: HTMLButtonElement = document.querySelector("#sort-asc") as HTMLButtonElement;
 let sortDef: HTMLButtonElement = document.querySelector("#sort-default") as HTMLButtonElement;
+*/
+let sortContainer: HTMLDivElement = (document.querySelector(".sort") as HTMLDivElement);
 let sortS: HTMLButtonElement = document.querySelector("#small") as HTMLButtonElement;
 let sortM: HTMLButtonElement = document.querySelector("#medium") as HTMLButtonElement;
 let sortL: HTMLButtonElement = document.querySelector("#large") as HTMLButtonElement;
-sortDesc.innerHTML = "Sortera L - S";
+let sortAll: HTMLButtonElement = document.querySelector("#allitems") as HTMLButtonElement;
+sortS.innerHTML = "S";
+sortM.innerHTML = "M";
+sortL.innerHTML = "L";
+sortAll.innerHTML = "Alla tavlor";
+sortContainer.appendChild(sortS);
+sortContainer.appendChild(sortM);
+sortContainer.appendChild(sortL);
+sortContainer.appendChild(sortAll);
+
+let selectedSize: string = "";
+
+sortS.addEventListener("click", () => {
+  selectedSize = "S";
+  filterOptions(products);
+});
+
+sortM.addEventListener("click", () => {
+  selectedSize = "M";
+  filterOptions(products);
+});
+
+sortL.addEventListener("click", () => {
+  selectedSize = "L";
+  filterOptions(products);
+});
+
+sortAll.addEventListener("click", () => {
+  selectedSize = "Alla tavlor";
+  filterOptions(products);
+});
+
+function filterOptions(products: Item[]) {
+  let filtered = products.filter((paintings) => {
+    return paintings.size === selectedSize;
+  });
+
+  if (selectedSize === "Alla tavlor") {
+    createHTMLProductlist(products);
+  }
+  else {
+    displaySelectedSize(filtered);
+  }
+}
+
+function displaySelectedSize(filtered: Item[]) {
+  let flexContainer = document.querySelector(
+    ".flexContainer"
+  ) as HTMLDivElement;
+  flexContainer.innerHTML = "";
+
+  for (let i = 0; i < filtered.length; i++) {
+    //Creates the HTML elements we need:
+    let itemContainer = document.createElement("div") as HTMLDivElement;
+    let itemImg = document.createElement("img") as HTMLImageElement;
+    let itemTitle = document.createElement("h1") as HTMLHeadingElement;
+    let itemDesc = document.createElement("p") as HTMLParagraphElement;
+    let itemArticleNumber = document.createElement("p") as HTMLParagraphElement;
+    let itemSize = document.createElement("p") as HTMLParagraphElement;
+    let itemPrice = document.createElement("p") as HTMLParagraphElement;
+    let addBtn = document.createElement("button") as HTMLButtonElement;
+   // let productInfoBtn = document.createElement("button") as HTMLButtonElement;
+    //let anchorProductInfo = document.createElement("a") as HTMLAnchorElement;
+    //anchorProductInfo.href = "/src/pages/productdetailspage.html";
+
+    //Adds classes to the elements
+    itemContainer.classList.add("itemCard");
+    itemImg.classList.add("itemCard__image");
+    itemTitle.classList.add("itemCard__title");
+    itemDesc.classList.add("itemCard__desc");
+    itemArticleNumber.classList.add("itemCard__articleNumber");
+    itemPrice.classList.add("itemCard__price");
+    itemSize.classList.add("itemCard__size");
+    addBtn.classList.add("itemCard__addBtn");
+    //productInfoBtn.classList.add("itemCard__addBtn");
+
+    //Eventlistener for adding to cart
+    addBtn.addEventListener("click", () => {
+      addToCart(filtered[i]);
+      //getLocalStorage();
+      
+     /* let count: HTMLButtonElement = document.getElementById(
+        "basketCount"
+      ) as HTMLButtonElement;
+      count.innerHTML = "" + cart.length;
+      createHTMLCartpage();
+      //createHTMLCartpage(cart);
+      */
+     totalCount(); //////////////Test för count
+    });
+
+    //Adds content to the elements
+    itemImg.src = filtered[i].imageUrlLarge;
+    itemImg.alt = "";
+    itemTitle.innerText = filtered[i].title;
+    itemDesc.innerText = filtered[i].desc;
+    itemPrice.innerText = filtered[i].price.toString() + " kr";
+    itemArticleNumber.innerText =
+      "Artikel nummer: " + filtered[i].articleNumber;
+    itemSize.innerText = "Storlek: " + filtered[i].size;
+    addBtn.innerHTML = "Köp";
+   // productInfoBtn.innerHTML = "Mer Info";
+
+    flexContainer.appendChild(itemContainer);
+    itemContainer.appendChild(itemImg);
+    itemContainer.appendChild(itemTitle);
+    itemContainer.appendChild(itemDesc);
+    itemContainer.appendChild(itemArticleNumber);
+    itemContainer.appendChild(itemSize);
+    itemContainer.appendChild(itemPrice);
+    //itemContainer.appendChild(itemSize);
+    itemContainer.appendChild(addBtn);
+
+
+  }
+}
+/*sortDesc.innerHTML = "Sortera L - S";
 sortAsc.innerHTML = "Sortera S - L";
 sortDef.innerHTML = "Geeze it up"
 sortS.innerHTML = "S";
 sortM.innerHTML = "M";
-sortL.innerHTML = "L";
+sortL.innerHTML = "L";*/
 
-sortContainer.appendChild(sortDesc);
-sortContainer.appendChild(sortAsc);
-sortContainer.appendChild(sortDef);
-sortContainer.appendChild(sortS);
+//sortContainer.appendChild(sortDesc);
+//sortContainer.appendChild(sortAsc);
+//sortContainer.appendChild(sortDef);
+/*sortContainer.appendChild(sortS);
 sortContainer.appendChild(sortM);
 sortContainer.appendChild(sortL);
+sortContainer.appendChild(sortAll);*/
 
 
+
+/*
 sortDesc.addEventListener("click", () => {
   let flexContainer = document.querySelector(
     ".flexContainer"
