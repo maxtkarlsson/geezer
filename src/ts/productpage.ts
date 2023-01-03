@@ -1,5 +1,5 @@
 //import { createHTMLCartpage } from "./cartpage";
-import { getLocalStorage } from "./functions";
+import { getLocalStorage, totalCount } from "./functions";
 import { Item } from "./models/item";
 import { products } from "./models/itemArray";
 import { ShoppingCartItem } from "./models/ShoppingCartItem";
@@ -77,12 +77,14 @@ function createHTMLProductlist(products: Item[]) {
       addToCart(products[i]);
       //getLocalStorage();
       
-      let count: HTMLButtonElement = document.getElementById(
+     /* let count: HTMLButtonElement = document.getElementById(
         "basketCount"
       ) as HTMLButtonElement;
       count.innerHTML = "" + cart.length;
       createHTMLCartpage();
       //createHTMLCartpage(cart);
+      */
+     totalCount(); //////////////Test för count
     });
 
     //Eventlistener for btn that takes you to product details
@@ -234,3 +236,7 @@ export function resetSort () {
   
   createHTMLProductlist(products);
 };
+
+
+
+

@@ -1,8 +1,9 @@
 
-import { createHTMLCartpage } from "./functions";
+import { createHTMLCartpage, totalCount } from "./functions";
 
 //getLocalStorage();
 createHTMLCartpage();
+totalCount();
 
 /*
 
