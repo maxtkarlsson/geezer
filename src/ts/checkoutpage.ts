@@ -1,6 +1,8 @@
-import { createHTMLCartpage } from "./functions";
+import { createHTMLCartpage, totalCount } from "./functions";
 import { ShoppingCartItem } from "./models/ShoppingCartItem";
 import { getLocalStorage } from "./functions";
+
+totalCount();
 
 let container = document.querySelector(".flexContainer") as HTMLDivElement;
 //let container = document.getElementById("#checkoutContainer")as HTMLDivElement;
