@@ -192,6 +192,10 @@ function filterOptions(products: Item[]) {
   });
 
   if (selectedSize === "Alla tavlor") {
+    let flexContainer = document.querySelector(
+    ".flexContainer"
+  ) as HTMLDivElement;
+  flexContainer.innerHTML = "";
     createHTMLProductlist(products);
   }
   else {
