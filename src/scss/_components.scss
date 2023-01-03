@@ -78,152 +78,146 @@ nav {
   margin-right: 2vw;
   background-color: b.$ggrey;
   @include b.for-size(desktop) {
-   @include b.FlexRowCenter;
+    @include b.FlexRowCenter;
     background-color: b.$ggrey;
     flex-wrap: wrap;
     text-align: center;
     justify-content: space-between;
-    width:96vw;
+    width: 96vw;
     margin-top: 20px;
     margin-bottom: 20px;
-
   }
-   //Item cards
-.itemCard {
-  @include b.FlexColCenter;
-  margin-top: 2em;
-  padding: 1em;
-  border-bottom: 1px solid grey;
-  text-align: center;
-  flex-wrap: wrap;
-  
-  background-color: b.$ggrey;
-  @include b.for-size(desktop) {
-    border-bottom: 0px;
-    background-color: b.$ggrey;
-    text-align: center;
-    width: 48vw;
-    height: 800px;
-    padding:0;
-    //flex-flow: block;
-    //flex-wrap: wrap;
-    //flex-flow: column;
-   //@include b.FlexRowCenter;
-   //@include b.FlexColCenter;
-   display: inline-block;
-   flex-direction: row;
-   margin-top: 10px;
-   //justify-self: center;
-   
-  }
-
-  &--small {
-    @include b.FlexRowCenter;
-    justify-content: space-between;
-    margin-top: 1em;
-  }
-
-  &__image {
+  //Item cards
+  .itemCard {
     @include b.FlexColCenter;
-    @include b.for-size(desktop) {
-      
-      //text-align: center;
-      align-self: center;
-      justify-self: center;
-      flex-wrap: wrap;
-      margin: auto;
-      display: block;
-      //@include b.FlexRowCenter;
-      //display: block;
-    }
-    
-    &--small {
-      height: 100px;
-      width: 100px;
-    }
-  }
-
-  &__title {
-    display: flex;
-    margin-top: 0.5em;
-    align-self: flex-start;
-    flex-wrap: wrap;
-    font-size: 1.5em;
+    margin-top: 2em;
+    padding: 1em;
+    border-bottom: 1px solid grey;
     text-align: center;
-    align-self: center;
+    flex-wrap: wrap;
+
+    background-color: b.$ggrey;
     @include b.for-size(desktop) {
+      border-bottom: 0px;
+      background-color: b.$ggrey;
+      text-align: center;
+      width: 48vw;
+      height: 800px;
+      padding: 0;
+      //flex-flow: block;
+      //flex-wrap: wrap;
+      //flex-flow: column;
+      //@include b.FlexRowCenter;
+      //@include b.FlexColCenter;
+      display: inline-block;
+      flex-direction: row;
+      margin-top: 10px;
+      //justify-self: center;
+    }
+
+    &--small {
+      @include b.FlexRowCenter;
+      justify-content: space-between;
+      margin-top: 1em;
+    }
+
+    &__image {
+      @include b.FlexColCenter;
+      @include b.for-size(desktop) {
+        //text-align: center;
+        align-self: center;
+        justify-self: center;
+        flex-wrap: wrap;
+        margin: auto;
+        display: block;
+        //@include b.FlexRowCenter;
+        //display: block;
+      }
+
+      &--small {
+        height: 100px;
+        width: 100px;
+      }
+    }
+
+    &__title {
+      display: flex;
+      margin-top: 0.5em;
+      align-self: flex-start;
+      flex-wrap: wrap;
+      font-size: 1.5em;
       text-align: center;
       align-self: center;
-      margin: auto;
-      display: block;
-      margin-top: 0.5em;
-    }
-    
+      @include b.for-size(desktop) {
+        text-align: center;
+        align-self: center;
+        margin: auto;
+        display: block;
+        margin-top: 0.5em;
+      }
 
-    &--small {
-      font-size: 1em;
+      &--small {
+        font-size: 1em;
+        align-self: center;
+        margin-top: 0;
+        //background-color: blue;
+      }
+    }
+
+    &__desc {
+      @include b.for-size(desktop) {
+        display: block;
+        text-align: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        text-overflow: clip;
+      }
+    }
+
+    &__articleNumber {
+      align-self: flex-end;
+      font-style: italic;
+    }
+
+    &__price {
+      font-size: 2em;
+      &--small {
+        align-self: center;
+        //background-color: burlywood;
+      }
+    }
+
+    &__size {
+      font-weight: bold;
+    }
+
+    &__quantity {
+      &--small {
+        //background-color: coral;
+      }
+    }
+
+    &__addBtn {
+      background-color: b.$ggreen;
+      font-size: 1.5em;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      padding-top: 0.3em;
+      padding-bottom: 0.3em;
+      padding-right: 1em;
+      padding-left: 1em;
       align-self: center;
-      margin-top: 0;
-      //background-color: blue;
+      @include b.for-size(desktop) {
+        margin-left: 5px;
+      }
+
+      &:hover {
+        background-color: #d4eb72;
+      }
     }
   }
-
-  &__desc {
-    @include b.for-size(desktop) {
-      display: block;
-      text-align:center;
-      flex-wrap: wrap;
-      flex-direction: column;
-      align-items: center;
-      text-overflow: clip;
-    }
-    
-  }
-
-  &__articleNumber {
-    align-self: flex-end;
-    font-style: italic;
-  }
-
-  &__price {
-    font-size: 2em;
-    &--small {
-      align-self: center;
-      //background-color: burlywood;
-    }
-  }
-
-  &__size {
-    font-weight: bold;
-  }
-
-  &__quantity {
-    &--small {
-      //background-color: coral;
-    }
-  }
-
-  &__addBtn {
-    background-color: b.$ggreen;
-    font-size: 1.5em;
-    font-weight: bold;
-    border: none;
-    border-radius: 4px;
-    padding-top: 0.3em;
-    padding-bottom: 0.3em;
-    padding-right: 1em;
-    padding-left: 1em;
-    align-self: center;
-    @include b.for-size(desktop) {
-      margin-left: 5px;
-    }
-
-    &:hover {
-      background-color: #d4eb72;
-    }
-  }
-}
- 
 }
 /*
 //Item cards
@@ -337,22 +331,20 @@ nav {
 }
 */
 
-
-
 .formContainer {
   //margin: 0;
   //display: flex;
   //flex-direction: column;
   @include b.FlexColCenter;
   @include b.for-size(desktop) {
-    @include b.FlexColCenter; 
+    @include b.FlexColCenter;
   }
 
   &__form {
     padding: 20px;
     @include b.FlexColCenter;
     @include b.for-size(desktop) {
-      @include b.FlexColCenter; 
+      @include b.FlexColCenter;
       flex-basis: 100%;
     }
   }
@@ -372,41 +364,41 @@ nav {
 
 #checkoutContainer {
   @include b.FlexColCenter;
-  @include b.for-size(desktop){
-    @include b.FlexRowCenter
+  @include b.for-size(desktop) {
+    @include b.FlexRowCenter;
   }
 }
 
 .itemCardCheckout--small {
   flex-basis: 100%;
   margin-top: 20px;
-  @include b.for-size(desktop){
+  @include b.for-size(desktop) {
     @include b.FlexColCenter;
     margin-top: 40px;
   }
 
+  &__image--small {
+    //margin-top: 20px;
+    @include b.FlexColCenter;
+    @include b.for-size(desktop) {
+      @include b.FlexRowCenter;
+    }
+  }
+  &__title--small {
+    @include b.FlexRowCenter;
+  }
 
-&__image--small{
-  //margin-top: 20px;
-  @include b.FlexColCenter;
-  @include b.for-size(desktop){
-    @include b.FlexRowCenter
+  &__price--small {
+    @include b.FlexColCenter;
+  }
+
+  &__quantity--small {
+    @include b.FlexColCenter;
   }
 }
-&__title--small {
-  @include b.FlexRowCenter;
-}
 
-&__price--small {
-@include b.FlexColCenter;
-}
-
-&__quantity--small {
-  @include b.FlexColCenter;
-}
-}
-
-footer {
+//Footer
+.contact {
   background-color: black;
   width: 100vw;
   color: white;
@@ -419,7 +411,7 @@ footer {
   justify-content: space-evenly;
   align-items: center;
   //position: fixed;
-  @include b.for-size(desktop){
+  @include b.for-size(desktop) {
     font-size: 0.8em;
   }
 }

@@ -29,8 +29,9 @@ img {
   &__logo {
     padding-top: 10vh;
     padding-bottom: 40vh;
+    height: 100vh;
     color: #ffbc2c;
-    font-size: 10rem;
+    font-size: 8em;
     @include b.for-size(desktop) {
       font-size: 15rem;
     }
