@@ -361,6 +361,18 @@ nav {
     @include b.FlexColCenter;
   }
 
+  &__firstname {
+    margin-top: 10px;
+  }
+
+  &__lastname {
+    margin-top: 10px;
+  }
+
+  &__phone {
+    margin-top: 10px;
+  }
+
   &__form {
     padding: 20px;
     @include b.FlexColCenter;
