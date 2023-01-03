@@ -149,136 +149,119 @@ createHTMLCartpage();
 
 
 
-/*
 
 let sortContainer: HTMLDivElement = (document.querySelector(".sort") as HTMLDivElement);
-let sortDesc: HTMLButtonElement = document.querySelector(
-  "#sort-desc"
-) as HTMLButtonElement;
-let sortAsc: HTMLButtonElement = document.querySelector("#sort-asc") as HTMLButtonElement;
-let sortDef: HTMLButtonElement = document.querySelector("#sort-default") as HTMLButtonElement;
 let sortS: HTMLButtonElement = document.querySelector("#small") as HTMLButtonElement;
 let sortM: HTMLButtonElement = document.querySelector("#medium") as HTMLButtonElement;
 let sortL: HTMLButtonElement = document.querySelector("#large") as HTMLButtonElement;
-sortDesc.innerHTML = "Sortera L - S";
-sortAsc.innerHTML = "Sortera S - L";
-sortDef.innerHTML = "Geeze it up"
+let sortAll: HTMLButtonElement = document.querySelector("#allitems") as HTMLButtonElement;
 sortS.innerHTML = "S";
 sortM.innerHTML = "M";
 sortL.innerHTML = "L";
-
-sortContainer.appendChild(sortDesc);
-sortContainer.appendChild(sortAsc);
-sortContainer.appendChild(sortDef);
+sortAll.innerHTML = "Alla tavlor";
 sortContainer.appendChild(sortS);
 sortContainer.appendChild(sortM);
 sortContainer.appendChild(sortL);
-
-
-sortDesc.addEventListener("click", () => {
-  let flexContainer = document.querySelector(
-    ".flexContainer"
-  ) as HTMLDivElement;
-  flexContainer.innerHTML = "";
-  
-  let sortedItemsDesc = products.sort((a: Item, b: Item) => (a.sizeValue > b.sizeValue) ? -1 : 1);
-
-  createHTMLProductlist(sortedItemsDesc);
-  //return sortedItemsDesc;
-  console.log(sortedItemsDesc);
-  sortDescending();
-  //return createHTMLProductlist(sortedItemsDesc);
-  //console.error(sortedItemsDesc);
-  
-  
-});
-
-
-
-
-export function sortDescending () {
-
-  let sortedItemsDesc: Item[] = products.sort((a: Item, b: Item) => (a.sizeValue > b.sizeValue) ? -1 : 1);
-  return sortedItemsDesc;
-
-
-
-};
-
-sortAsc.addEventListener("click", () => {
-
-  let flexContainer = document.querySelector(
-    ".flexContainer"
-  ) as HTMLDivElement;
-  flexContainer.innerHTML = "";
-
-  let sortedItemsAsc = products.sort((a: Item, b: Item) => (a.sizeValue < b.sizeValue) ? -1 : 0);
-  
-  createHTMLProductlist(sortedItemsAsc);
-  sortAscending();
-  //return createHTMLProductlist(sortedItemsAsc);
-
-
-})
-
-export function sortAscending () {
-
-  let sortedItemsAsc: Item[] = products.sort((a: Item, b: Item) => (a.sizeValue < b.sizeValue) ? -1 : 0);
-  return sortedItemsAsc;
-};
-
-sortDef.addEventListener("click", () => {
-  let flexContainer = document.querySelector(
-    ".flexContainer"
-  ) as HTMLDivElement;
-  flexContainer.innerHTML = "";
-
-  let defaultArray = products;
-
-  toDefault();
-
-  
-
-  createHTMLProductlist(defaultArray);
-  //return createHTMLProductlist(products);
- 
-
-  
-})
-
-export function toDefault () {
-  let defaultArray: Item[] = products;
-  return defaultArray.toString;
-};*/
-
-/*
-let selectSize: HTMLSelectElement = document.querySelector("#selectSize") as HTMLSelectElement;
-let optionSmall: HTMLOptionElement = document.querySelector("#small") as HTMLOptionElement;
-let optionMedium: HTMLOptionElement = document.querySelector("#medium") as HTMLOptionElement;
-let optionLarge: HTMLOptionElement = document.querySelector("#large") as HTMLOptionElement;
-let chooseSize: HTMLButtonElement = document.querySelector("#chooseSize") as HTMLButtonElement;
-optionSmall.value = "1";
-optionMedium.value = "2";
-optionLarge.value = "3";
-optionSmall.text = "S";
-optionMedium.text = "M";
-optionLarge.text = "L";
+sortContainer.appendChild(sortAll);
 
 let selectedSize: string = "";
 
-*/
-    
-/*
-optionSmall.addEventListener("select", () => {
+sortS.addEventListener("click", () => {
   selectedSize = "S";
-  let productsSmall = products.findIndex(Item => Item.sizeValue === 1);
-})
+  filterOptions(products);
+});
+
+sortM.addEventListener("click", () => {
+  selectedSize = "M";
+  filterOptions(products);
+});
+
+sortL.addEventListener("click", () => {
+  selectedSize = "L";
+  filterOptions(products);
+});
+
+sortAll.addEventListener("click", () => {
+  selectedSize = "Alla tavlor";
+  filterOptions(products);
+});
+
+function filterOptions(products: Item[]) {
+  let filtered = products.filter((paintings) => {
+    return paintings.size === selectedSize;
+  });
+
+  if (selectedSize === "Alla tavlor") {
+    createHTMLProductlist(products);
+  }
+  else {
+    displaySelectedSize(filtered);
+  }
+}
+
+function displaySelectedSize(filtered: Item[]) {
+  let flexContainer = document.querySelector(
+    ".flexContainer"
+  ) as HTMLDivElement;
+  flexContainer.innerHTML = "";
+
+  for (let i = 0; i < filtered.length; i++) {
+    //Creates the HTML elements we need:
+    let itemContainer = document.createElement("div") as HTMLDivElement;
+    let itemImg = document.createElement("img") as HTMLImageElement;
+    let itemTitle = document.createElement("h1") as HTMLHeadingElement;
+    let itemDesc = document.createElement("p") as HTMLParagraphElement;
+    let itemArticleNumber = document.createElement("p") as HTMLParagraphElement;
+    let itemSize = document.createElement("p") as HTMLParagraphElement;
+    let itemPrice = document.createElement("p") as HTMLParagraphElement;
+    let addBtn = document.createElement("button") as HTMLButtonElement;
+   
+    //Adds classes to the elements
+    itemContainer.classList.add("itemCard");
+    itemImg.classList.add("itemCard__image");
+    itemTitle.classList.add("itemCard__title");
+    itemDesc.classList.add("itemCard__desc");
+    itemArticleNumber.classList.add("itemCard__articleNumber");
+    itemPrice.classList.add("itemCard__price");
+    itemSize.classList.add("itemCard__size");
+    addBtn.classList.add("itemCard__addBtn");
+    
+
+    //Eventlistener for adding to cart
+    addBtn.addEventListener("click", () => {
+      addToCart(filtered[i]);
+      //getLocalStorage();
+      
+     /* let count: HTMLButtonElement = document.getElementById(
+        "basketCount"
+      ) as HTMLButtonElement;
+      count.innerHTML = "" + cart.length;
+      createHTMLCartpage();
+      //createHTMLCartpage(cart);
+      */
+     totalCount(); //////////////Test för count
+    });
+
+    //Adds content to the elements
+    itemImg.src = filtered[i].imageUrlLarge;
+    itemImg.alt = "";
+    itemTitle.innerText = filtered[i].title;
+    itemDesc.innerText = filtered[i].desc;
+    itemPrice.innerText = filtered[i].price.toString() + " kr";
+    itemArticleNumber.innerText =
+      "Artikel nummer: " + filtered[i].articleNumber;
+    itemSize.innerText = "Storlek: " + filtered[i].size;
+    addBtn.innerHTML = "Köp";
+
+    flexContainer.appendChild(itemContainer);
+    itemContainer.appendChild(itemImg);
+    itemContainer.appendChild(itemTitle);
+    itemContainer.appendChild(itemDesc);
+    itemContainer.appendChild(itemArticleNumber);
+    itemContainer.appendChild(itemSize);
+    itemContainer.appendChild(itemPrice);
+    itemContainer.appendChild(addBtn);
 
 
-let productsSmall = products.findIndex(Item => Item.sizeValue === 1);
-console.log(productsSmall);
-
-export function selectASize () {
-  let myProducts: Item[] = products;
-
-}*/
+  }
+}
