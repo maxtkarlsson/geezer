@@ -97,20 +97,33 @@ let phoneInput = document.createElement("input")as HTMLInputElement;
 phoneInput.setAttribute("type", "number");
 phoneInput.setAttribute("placeholder", "Telefonnummer");
 
+
+
+
 let paymentContainer = document.createElement("div")as HTMLDivElement;
 let cardRadio = document.createElement("input") as HTMLInputElement;
 cardRadio.setAttribute("type", "radio");
 cardRadio.setAttribute("name", "payment");
 let payWithCard = document.createElement("p") as HTMLParagraphElement;
 payWithCard.innerHTML="Betala med kort";
+let cardInput = document.createElement("input")as HTMLInputElement;
+cardInput.setAttribute("type", "number");
+cardInput.setAttribute("placeholder", "Kortnummer");
+//cardInput.setAttribute("id", "cardId");
+payWithCard.appendChild(cardInput);
 let swishRadio = document.createElement("input") as HTMLInputElement;
 let payWithSwish = document.createElement("p") as HTMLParagraphElement;
 payWithSwish.innerHTML="Betala med swish";
 swishRadio.setAttribute("type", "radio");
 swishRadio.setAttribute("name", "payment");
+let swishInput = document.createElement("input")as HTMLInputElement;
+swishInput.setAttribute("type", "number");
+swishInput.setAttribute("placeholder", "Telefonnummer");
+//swishInput.setAttribute("id", "swishId");
+payWithSwish.appendChild(swishInput);
 
-//let anchorConfirmationPage = document.createElement("anchor")as HTMLAnchorElement;
-//anchorConfirmationPage.setAttribute("url", "/src/pages/confirmationpage.html");
+let anchorConfirmationPage = document.createElement("anchor")as HTMLAnchorElement;
+anchorConfirmationPage.setAttribute("url", "/src/pages/confirmationpage.html");
 let payBtn = document.createElement("button") as HTMLButtonElement;
 payBtn.innerHTML="Betala";
 
@@ -122,6 +135,8 @@ lastnameInput.classList.add("formContainer__lastname");
 phoneInput.classList.add("formContainer__phone");
 paymentContainer.classList.add("formContainer__paymentContainer");
 payBtn.classList.add("formContainer__payBtn");
+cardInput.classList.add("input__card--hidden");
+swishInput.classList.add("input__swish--hidden");
 
 //anchorConfirmationPage.appendChild(payBtn);
 form.appendChild(firstnameInput);
@@ -143,6 +158,35 @@ container.appendChild(formContainer)
 payBtn.addEventListener("click", ()=>{
     window.location.replace("/src/pages/confirmationpage.html");
 })
+
+cardRadio.addEventListener("click", () => {
+  if (cardRadio.checked = true) {
+    //let swishInput = document.createElement("input")as HTMLInputElement;
+    cardInput.classList.remove("input__card--hidden"); 
+    cardInput.classList.add("input__card--show"); 
+  }
+  else {
+    cardInput.classList.remove("input__card--show"); 
+    cardInput.classList.add("input__card--hidden");
+  }
+    
+})
+
+swishRadio.addEventListener ("click", () => {
+  if (swishInput.checked = true) {
+    cardInput.checked=false;
+    swishInput.classList.remove("input__swish--hidden"); 
+    swishInput.classList.add("input__swish--show"); 
+  }
+
+  /*
+  let swishInput = document.createElement("input")as HTMLInputElement;
+  swishInput.setAttribute("type", "number");
+  swishInput.setAttribute("placeholder", "Telefonnummer");
+  const isHidden = swishInput.style.display === "none";*/
+});
+
+
 
 
 

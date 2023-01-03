@@ -423,3 +423,21 @@ footer {
     font-size: 0.8em;
   }
 }
+
+
+.input__card--hidden {
+  display: none;
+}
+
+.input__card--show {
+  display: block;
+}
+
+.input__swish--hidden {
+  display: none;
+
+}
+
+.input__swish--show {
+  display: block;
+}
