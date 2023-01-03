@@ -17,6 +17,7 @@
   justify-content: center;
   text-align: center;
 }
+
 #brand-logo {
   display: flex;
   flex-direction: row;
@@ -92,7 +93,7 @@ nav {
     background-color: b.$ggrey;
     flex-wrap: wrap;
     text-align: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 96vw;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -108,8 +109,17 @@ nav {
 
     background-color: b.$ggrey;
     @include b.for-size(desktop) {
+      width: 50%;
+      padding-left: 10%;
+      padding-right: 10%;
+      border-bottom: none;
+
+      /*Ninas kod:
+        
       border-bottom: 0px;
       background-color: b.$ggrey;
+     
+
       text-align: center;
       width: 48vw;
       height: 800px;
@@ -122,7 +132,7 @@ nav {
       display: inline-block;
       flex-direction: row;
       margin-top: 10px;
-      //justify-self: center;
+      //justify-self: center;*/
     }
 
     &--small {
@@ -175,6 +185,7 @@ nav {
     }
 
     &__desc {
+      width: 90%;
       @include b.for-size(desktop) {
         display: block;
         text-align: center;
@@ -410,7 +421,7 @@ nav {
 //Footer
 .contact {
   background-color: black;
-  width: 100vw;
+  width: 100%;
   color: white;
   font-family: "Inter";
   font-size: 0.8em;

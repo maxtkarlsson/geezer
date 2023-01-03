@@ -7,7 +7,7 @@ body {
   background-color: b.$ggrey;
   margin: 0;
   padding: 0;
-  //width: 100vw;
+  width: 100%;
   @include b.for-size(desktop) {
     background-color: b.$gblueblack;
   }
