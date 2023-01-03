@@ -337,20 +337,23 @@ nav {
 }
 */
 
+
+
 .formContainer {
-  height: 100vh;
   //margin: 0;
   //display: flex;
   //flex-direction: column;
   @include b.FlexColCenter;
   @include b.for-size(desktop) {
-    @include b.FlexRowCenter; 
+    @include b.FlexColCenter; 
   }
 
   &__form {
     padding: 20px;
+    @include b.FlexColCenter;
     @include b.for-size(desktop) {
-      @include b.FlexRowCenter; 
+      @include b.FlexColCenter; 
+      flex-basis: 100%;
     }
   }
 
@@ -360,7 +363,9 @@ nav {
 
   &__payBtn {
     width: 20vw;
+    margin-bottom: 20px;
     @include b.for-size(desktop) {
+      margin-bottom: 40px;
     }
   }
 }
@@ -374,10 +379,29 @@ nav {
 
 .itemCardCheckout--small {
   flex-basis: 100%;
+  margin-top: 20px;
+  @include b.for-size(desktop){
+    @include b.FlexColCenter;
+    margin-top: 40px;
+  }
+
 
 .itemCardCheckout__image--small{
+  //margin-top: 20px;
+  @include b.FlexColCenter;
   @include b.for-size(desktop){
     @include b.FlexRowCenter
   }
+}
+.itemCardCheckout__title--small {
+  @include b.FlexRowCenter;
+}
+
+.itemCardCheckout__price--small {
+@include b.FlexColCenter;
+}
+
+.itemCardCheckout__quantity--small {
+  @include b.FlexColCenter;
 }
 }
