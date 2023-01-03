@@ -105,11 +105,12 @@ swishInput.setAttribute("type", "number");
 swishInput.setAttribute("placeholder", "Telefonnummer");
 //swishInput.setAttribute("id", "swishId");
 payWithSwish.appendChild(swishInput);
-
+/*
 let anchorConfirmationPage = document.createElement(
   "anchor"
 ) as HTMLAnchorElement;
 anchorConfirmationPage.setAttribute("url", "/src/pages/confirmationpage.html");
+*/
 let payBtn = document.createElement("button") as HTMLButtonElement;
 payBtn.innerHTML = "Betala";
 
@@ -142,10 +143,10 @@ formContainer.appendChild(payBtn);
 container.appendChild(formContainer);
 
 payBtn.addEventListener("click", () => {
-  window.location.replace("/src/pages/confirmationpage.html");
+  window.location.replace("/pages/confirmationpage.html");
 });
 
-function createHTMLForm () {
+function createHTMLForm() {
   cardRadio.addEventListener("click", () => {
     if ((cardRadio.checked = true)) {
       //let swishInput = document.createElement("input")as HTMLInputElement;
@@ -155,7 +156,7 @@ function createHTMLForm () {
       swishInput.classList.remove("input__swish--show");
     }
   });
-  
+
   swishRadio.addEventListener("click", () => {
     if ((swishInput.checked = true)) {
       //cardInput.checked = false;
@@ -164,8 +165,7 @@ function createHTMLForm () {
       swishInput.classList.remove("input__swish--hidden");
       swishInput.classList.add("input__swish--show");
     }
-  })
+  });
 }
 
-createHTMLForm ();
-
+createHTMLForm();
