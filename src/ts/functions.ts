@@ -67,6 +67,7 @@ export function createHTMLCartpage() {
       cart[i].quantity++;
       localStorage.setItem("cart", JSON.stringify(cart) || "[]");
       createHTMLCartpage();
+      totalCount(); //////////Test för totalCount
     });
 
     decreaseBtn.addEventListener("click", () => {
@@ -77,6 +78,7 @@ export function createHTMLCartpage() {
         cart[i].quantity++;
       }
       localStorage.setItem("cart", JSON.stringify(cart) || "[]");
+      totalCount();
 
       //decreaseQuantity(cart[i]);
       //getLocalStorage(); //setta local
@@ -86,6 +88,7 @@ export function createHTMLCartpage() {
     deleteBtn.addEventListener("click", () => {
       removeItem(cart[i]);
       createHTMLCartpage();
+      totalCount();
     });
 
    /* purchaseBtn.addEventListener("click", () => {
@@ -147,6 +150,26 @@ function createPurchaseBtn () {
     window.location.replace("/pages/checkoutpage.html");
   });
 }
+
+export function totalCount () {
+  let count: HTMLButtonElement = document.getElementById(
+    "basketCount"
+  ) as HTMLButtonElement;
+  let cart: ShoppingCartItem[] = getLocalStorage();
+  let totalQuantity:number=0;
+  for(let i=0;i<cart.length;i++) {
+    totalQuantity += cart[i].quantity;
+  }
+  count.innerHTML = "" + totalQuantity;
+  createHTMLCartpage();
+  console.log(totalQuantity);
+  localStorage.setItem("cart", JSON.stringify(cart) || "[]");
+  return totalQuantity;
+
+  //createHTMLCartpage(cart);
+  
+}
+
 
 
 

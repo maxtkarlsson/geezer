@@ -1,5 +1,5 @@
 //import { createHTMLCartpage } from "./cartpage";
-import { getLocalStorage } from "./functions";
+import { getLocalStorage, totalCount } from "./functions";
 import { Item } from "./models/item";
 import { products } from "./models/itemArray";
 import { ShoppingCartItem } from "./models/ShoppingCartItem";
@@ -57,9 +57,9 @@ function createHTMLProductlist(products: Item[]) {
     let itemSize = document.createElement("p") as HTMLParagraphElement;
     let itemPrice = document.createElement("p") as HTMLParagraphElement;
     let addBtn = document.createElement("button") as HTMLButtonElement;
-    let productInfoBtn = document.createElement("button") as HTMLButtonElement;
-    let anchorProductInfo = document.createElement("a") as HTMLAnchorElement;
-    anchorProductInfo.href = "/src/pages/productdetailspage.html";
+   // let productInfoBtn = document.createElement("button") as HTMLButtonElement;
+    //let anchorProductInfo = document.createElement("a") as HTMLAnchorElement;
+    //anchorProductInfo.href = "/src/pages/productdetailspage.html";
 
     //Adds classes to the elements
     itemContainer.classList.add("itemCard");
@@ -70,41 +70,43 @@ function createHTMLProductlist(products: Item[]) {
     itemPrice.classList.add("itemCard__price");
     itemSize.classList.add("itemCard__size");
     addBtn.classList.add("itemCard__addBtn");
-    productInfoBtn.classList.add("itemCard__addBtn");
+    //productInfoBtn.classList.add("itemCard__addBtn");
 
     //Eventlistener for adding to cart
     addBtn.addEventListener("click", () => {
       addToCart(products[i]);
       //getLocalStorage();
       
-      let count: HTMLButtonElement = document.getElementById(
+     /* let count: HTMLButtonElement = document.getElementById(
         "basketCount"
       ) as HTMLButtonElement;
       count.innerHTML = "" + cart.length;
       createHTMLCartpage();
       //createHTMLCartpage(cart);
+      */
+     totalCount(); //////////////Test för count
     });
 
     //Eventlistener for btn that takes you to product details
-    productInfoBtn.value = products[i].articleNumber;
-    productInfoBtn.addEventListener("click", () => {
-      let currentItem = Object.keys(products[i]);
-      console.log(currentItem);
+    //productInfoBtn.value = products[i].articleNumber;
+    //productInfoBtn.addEventListener("click", () => {
+     //let currentItem = Object.keys(products[i]);
+     // console.log(currentItem);
       //selectedItem = products[i];
       //createHTMLExtendedProductInfo(selectedItem);
       //set item i LS, json.stringify products[i];
       //location href --> inforbtn.href
-      localStorage.setItem("product", JSON.stringify(products[i]) || "");
-      location.href = anchorProductInfo.href;
+      //localStorage.setItem("product", JSON.stringify(products[i]) || "");
+      //location.href = anchorProductInfo.href;
       //window.location.replace("/pages/productdetailspage.html");
-    });
+    //});
 
-    productInfoBtn.onclick = function (event: MouseEvent) {
+    /*productInfoBtn.onclick = function (event: MouseEvent) {
       if (productInfoBtn.id === products[i].articleNumber) {
         createHTMLExtendedProductInfo(products[i]);
       }
     };
-
+*/
     //Adds id
 
     //Adds content to the elements
@@ -117,7 +119,7 @@ function createHTMLProductlist(products: Item[]) {
       "Artikel nummer: " + products[i].articleNumber;
     itemSize.innerText = "Storlek: " + products[i].size;
     addBtn.innerHTML = "Köp";
-    productInfoBtn.innerHTML = "Mer Info";
+   // productInfoBtn.innerHTML = "Mer Info";
 
     //Adds elements to page
     let flexContainer = document.querySelector(
@@ -129,11 +131,12 @@ function createHTMLProductlist(products: Item[]) {
     itemContainer.appendChild(itemTitle);
     itemContainer.appendChild(itemDesc);
     itemContainer.appendChild(itemArticleNumber);
-    itemContainer.appendChild(itemPrice);
     itemContainer.appendChild(itemSize);
+    itemContainer.appendChild(itemPrice);
+    //itemContainer.appendChild(itemSize);
     itemContainer.appendChild(addBtn);
-    itemContainer.appendChild(anchorProductInfo);
-    anchorProductInfo.appendChild(productInfoBtn);
+   // itemContainer.appendChild(anchorProductInfo);
+    //anchorProductInfo.appendChild(productInfoBtn);
   }
   console.log("createHTMLProductlist has been run" + JSON.stringify(products));
 }
@@ -146,7 +149,7 @@ createHTMLCartpage();
 
 
 
-
+/*
 
 let sortContainer: HTMLDivElement = (document.querySelector(".sort") as HTMLDivElement);
 let sortDesc: HTMLButtonElement = document.querySelector(
@@ -154,13 +157,22 @@ let sortDesc: HTMLButtonElement = document.querySelector(
 ) as HTMLButtonElement;
 let sortAsc: HTMLButtonElement = document.querySelector("#sort-asc") as HTMLButtonElement;
 let sortDef: HTMLButtonElement = document.querySelector("#sort-default") as HTMLButtonElement;
+let sortS: HTMLButtonElement = document.querySelector("#small") as HTMLButtonElement;
+let sortM: HTMLButtonElement = document.querySelector("#medium") as HTMLButtonElement;
+let sortL: HTMLButtonElement = document.querySelector("#large") as HTMLButtonElement;
 sortDesc.innerHTML = "Sortera L - S";
 sortAsc.innerHTML = "Sortera S - L";
 sortDef.innerHTML = "Geeze it up"
+sortS.innerHTML = "S";
+sortM.innerHTML = "M";
+sortL.innerHTML = "L";
 
 sortContainer.appendChild(sortDesc);
 sortContainer.appendChild(sortAsc);
 sortContainer.appendChild(sortDef);
+sortContainer.appendChild(sortS);
+sortContainer.appendChild(sortM);
+sortContainer.appendChild(sortL);
 
 
 sortDesc.addEventListener("click", () => {
@@ -175,7 +187,7 @@ sortDesc.addEventListener("click", () => {
   //return sortedItemsDesc;
   console.log(sortedItemsDesc);
   sortDescending();
-  return createHTMLProductlist(sortedItemsDesc);
+  //return createHTMLProductlist(sortedItemsDesc);
   //console.error(sortedItemsDesc);
   
   
@@ -204,7 +216,7 @@ sortAsc.addEventListener("click", () => {
   
   createHTMLProductlist(sortedItemsAsc);
   sortAscending();
-  return createHTMLProductlist(sortedItemsAsc);
+  //return createHTMLProductlist(sortedItemsAsc);
 
 
 })
@@ -221,16 +233,52 @@ sortDef.addEventListener("click", () => {
   ) as HTMLDivElement;
   flexContainer.innerHTML = "";
 
+  let defaultArray = products;
+
+  toDefault();
+
   
 
-  resetSort();
-  return createHTMLProductlist(products);
+  createHTMLProductlist(defaultArray);
+  //return createHTMLProductlist(products);
  
 
   
 })
 
-export function resetSort () {
-  
-  createHTMLProductlist(products);
-};
+export function toDefault () {
+  let defaultArray: Item[] = products;
+  return defaultArray.toString;
+};*/
+
+/*
+let selectSize: HTMLSelectElement = document.querySelector("#selectSize") as HTMLSelectElement;
+let optionSmall: HTMLOptionElement = document.querySelector("#small") as HTMLOptionElement;
+let optionMedium: HTMLOptionElement = document.querySelector("#medium") as HTMLOptionElement;
+let optionLarge: HTMLOptionElement = document.querySelector("#large") as HTMLOptionElement;
+let chooseSize: HTMLButtonElement = document.querySelector("#chooseSize") as HTMLButtonElement;
+optionSmall.value = "1";
+optionMedium.value = "2";
+optionLarge.value = "3";
+optionSmall.text = "S";
+optionMedium.text = "M";
+optionLarge.text = "L";
+
+let selectedSize: string = "";
+
+*/
+    
+/*
+optionSmall.addEventListener("select", () => {
+  selectedSize = "S";
+  let productsSmall = products.findIndex(Item => Item.sizeValue === 1);
+})
+
+
+let productsSmall = products.findIndex(Item => Item.sizeValue === 1);
+console.log(productsSmall);
+
+export function selectASize () {
+  let myProducts: Item[] = products;
+
+}*/
