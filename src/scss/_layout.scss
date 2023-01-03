@@ -30,6 +30,9 @@ img {
     padding-top: 10vh;
     padding-bottom: 40vh;
     color: #ffbc2c;
-    font-size: 15rem;
+    font-size: 10rem;
+    @include b.for-size(desktop) {
+      font-size: 15rem;
+    }
   }
 }
