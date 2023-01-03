@@ -145,28 +145,27 @@ payBtn.addEventListener("click", () => {
   window.location.replace("/src/pages/confirmationpage.html");
 });
 
-cardRadio.addEventListener("click", () => {
-  if ((cardRadio.checked = true)) {
-    //let swishInput = document.createElement("input")as HTMLInputElement;
-    cardInput.classList.remove("input__card--hidden");
-    cardInput.classList.add("input__card--show");
-    swishInput.classList.add("input__swish--hidden");
-    swishInput.classList.remove("input__swish--show");
-  }
-});
+function createHTMLForm () {
+  cardRadio.addEventListener("click", () => {
+    if ((cardRadio.checked = true)) {
+      //let swishInput = document.createElement("input")as HTMLInputElement;
+      cardInput.classList.remove("input__card--hidden");
+      cardInput.classList.add("input__card--show");
+      swishInput.classList.add("input__swish--hidden");
+      swishInput.classList.remove("input__swish--show");
+    }
+  });
+  
+  swishRadio.addEventListener("click", () => {
+    if ((swishInput.checked = true)) {
+      //cardInput.checked = false;
+      cardInput.classList.remove("input__card--show");
+      cardInput.classList.add("input__card--hidden");
+      swishInput.classList.remove("input__swish--hidden");
+      swishInput.classList.add("input__swish--show");
+    }
+  })
+}
 
-swishRadio.addEventListener("click", () => {
-  if ((swishInput.checked = true)) {
-    //cardInput.checked = false;
-    cardInput.classList.remove("input__card--show");
-    cardInput.classList.add("input__card--hidden");
-    swishInput.classList.remove("input__swish--hidden");
-    swishInput.classList.add("input__swish--show");
-  }
+createHTMLForm ();
 
-  /*
-  let swishInput = document.createElement("input")as HTMLInputElement;
-  swishInput.setAttribute("type", "number");
-  swishInput.setAttribute("placeholder", "Telefonnummer");
-  const isHidden = swishInput.style.display === "none";*/
-});
