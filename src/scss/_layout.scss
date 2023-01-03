@@ -4,16 +4,35 @@
 /* This file contains all CSS regarding basic layout */
 
 body {
-    background-color: b.$ggrey;
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    @include b.for-size(desktop) {
-        background-color: b.$gblueblack;
-    }
-    
+  background-color: b.$ggrey;
+  margin: 0;
+  padding: 0;
+  //width: 100vw;
+  @include b.for-size(desktop) {
+    background-color: b.$gblueblack;
+  }
 }
 
 img {
-    display: flex;
+  display: flex;
+}
+
+//startpage (index.html) layout
+.mainStartpage {
+  @include b.FlexColCenter;
+  background-image: url("https://dl.dropboxusercontent.com/s/j3hez907w3295vw/w_1920_dark.png?dl=0");
+}
+
+.welcome {
+  @include b.FlexRowCenter;
+
+  &__logo {
+    padding-top: 10vh;
+    padding-bottom: 40vh;
+    color: #ffbc2c;
+    font-size: 10rem;
+    @include b.for-size(desktop) {
+      font-size: 15rem;
+    }
+  }
 }

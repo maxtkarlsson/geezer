@@ -59,7 +59,8 @@ function createHTMLPurchasedItems() {
     console.log("sumcart has been run");
     
     let cartSum = document.createElement("p")as HTMLParagraphElement;
-    let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;
+    container.appendChild(cartSum);
+    //let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;
     for (let i=0;i<cart.length;i++){
       totalSum += cart[i].cartItem.price * cart[i].quantity;
       cartSum.innerHTML = "Totalt:" + totalSum.toString() + "kr";
@@ -99,12 +100,14 @@ phoneInput.setAttribute("placeholder", "Telefonnummer");
 let paymentContainer = document.createElement("div")as HTMLDivElement;
 let cardRadio = document.createElement("input") as HTMLInputElement;
 cardRadio.setAttribute("type", "radio");
+cardRadio.setAttribute("name", "payment");
 let payWithCard = document.createElement("p") as HTMLParagraphElement;
 payWithCard.innerHTML="Betala med kort";
 let swishRadio = document.createElement("input") as HTMLInputElement;
 let payWithSwish = document.createElement("p") as HTMLParagraphElement;
 payWithSwish.innerHTML="Betala med swish";
 swishRadio.setAttribute("type", "radio");
+swishRadio.setAttribute("name", "payment");
 
 //let anchorConfirmationPage = document.createElement("anchor")as HTMLAnchorElement;
 //anchorConfirmationPage.setAttribute("url", "/src/pages/confirmationpage.html");
@@ -131,7 +134,7 @@ paymentContainer.appendChild(swishRadio)
 paymentContainer.appendChild(payWithSwish);
 //form.appendChild(payWithSwish)
 
-formContainer.appendChild(form);
+container.appendChild(form);
 //document.body.appendChild(anchorConfirmationPage);
 formContainer.appendChild(payBtn);
 //document.body.appendChild(formContainer);
