@@ -2,8 +2,6 @@ import { ShoppingCartItem } from "./models/ShoppingCartItem";
 import { getLocalStorage } from "./functions";
 
 
-
-
 let container = document.querySelector(".flexContainer") as HTMLDivElement;
 
 

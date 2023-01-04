@@ -1,37 +1,26 @@
-//import { createHTMLCartpage } from "./cartpage";
 import { getLocalStorage, totalCount } from "./functions";
 import { Item } from "./models/item";
 import { products } from "./models/itemArray";
 import { ShoppingCartItem } from "./models/ShoppingCartItem";
 import { createHTMLCartpage } from "./functions";
-import { createHTMLExtendedProductInfo } from "./productdetailspage";
+
 
 getLocalStorage();
 totalCount();
-//let cartFromLS: ShoppingCartItem[] = [];
 
-//När vi pushar saker i listan
-//variabler i oliak filer som heter samma namn
-//Flytta addtocart till product page, ha samma listor men de ska bara vara globala för en sida.
-
-//Vi måste ha en lista i denna funktionen, annars uppdateras den även om man rensrar lokalstolslddl
 export function addToCart(product: Item) {
-  let cart: ShoppingCartItem[] = []; //Samla sådana object i den listan
-  //Plockar från localstorage:
+  let cart: ShoppingCartItem[] = []; //Collect objects in array
+  //Gets from localstorage
   cart = getLocalStorage();
 
-  //Skapar ett shoppingCartItem med produkten vi klickat på.
+  //Sets a new shoppingcart-item for the chosen clicked product
   let newCartItem: ShoppingCartItem = new ShoppingCartItem(1, product);
 
-  //Kollar om artikelnr redan finns i vår cart
+  //Checks if the articlenumber already exists in our cart
   const containsProduct = cart.some((cart) => {
     return cart.cartItem.articleNumber == product.articleNumber;
   });
 
-  //loggar ut antingen true(produkten finns i cart) eller false(finns inte)
-  console.log(containsProduct);
-
-  //Måste ändra denna funktion?
   if (containsProduct === true) {
     for (let i = 0; i < cart.length; i++) {
       if (newCartItem.cartItem.articleNumber === cart[i].cartItem.articleNumber)
@@ -57,9 +46,6 @@ function createHTMLProductlist(products: Item[]) {
     let itemSize = document.createElement("p") as HTMLParagraphElement;
     let itemPrice = document.createElement("p") as HTMLParagraphElement;
     let addBtn = document.createElement("button") as HTMLButtonElement;
-   // let productInfoBtn = document.createElement("button") as HTMLButtonElement;
-    //let anchorProductInfo = document.createElement("a") as HTMLAnchorElement;
-    //anchorProductInfo.href = "/src/pages/productdetailspage.html";
 
     //Adds classes to the elements
     itemContainer.classList.add("itemCard");
@@ -70,46 +56,14 @@ function createHTMLProductlist(products: Item[]) {
     itemPrice.classList.add("itemCard__price");
     itemSize.classList.add("itemCard__size");
     addBtn.classList.add("itemCard__addBtn");
-    //productInfoBtn.classList.add("itemCard__addBtn");
-
+  
     //Eventlistener for adding to cart
     addBtn.addEventListener("click", () => {
       addToCart(products[i]);
-      //getLocalStorage();
-      
-     /* let count: HTMLButtonElement = document.getElementById(
-        "basketCount"
-      ) as HTMLButtonElement;
-      count.innerHTML = "" + cart.length;
-      createHTMLCartpage();
-      //createHTMLCartpage(cart);
-      */
-     totalCount(); //////////////Test för count
+      totalCount(); 
     });
 
-    //Eventlistener for btn that takes you to product details
-    //productInfoBtn.value = products[i].articleNumber;
-    //productInfoBtn.addEventListener("click", () => {
-     //let currentItem = Object.keys(products[i]);
-     // console.log(currentItem);
-      //selectedItem = products[i];
-      //createHTMLExtendedProductInfo(selectedItem);
-      //set item i LS, json.stringify products[i];
-      //location href --> inforbtn.href
-      //localStorage.setItem("product", JSON.stringify(products[i]) || "");
-      //location.href = anchorProductInfo.href;
-      //window.location.replace("/pages/productdetailspage.html");
-    //});
-
-    /*productInfoBtn.onclick = function (event: MouseEvent) {
-      if (productInfoBtn.id === products[i].articleNumber) {
-        createHTMLExtendedProductInfo(products[i]);
-      }
-    };
-*/
-    //Adds id
-
-    //Adds content to the elements
+    //Adds attributes to the elements 
     itemImg.src = products[i].imageUrlLarge;
     itemImg.alt = "";
     itemTitle.innerText = products[i].title;
@@ -119,9 +73,9 @@ function createHTMLProductlist(products: Item[]) {
       "Artikel nummer: " + products[i].articleNumber;
     itemSize.innerText = "Storlek: " + products[i].size;
     addBtn.innerHTML = "Köp";
-   // productInfoBtn.innerHTML = "Mer Info";
 
-    //Adds elements to page
+
+    //Sets the elements to the DOM
     let flexContainer = document.querySelector(
       ".flexContainer"
     ) as HTMLDivElement;
@@ -133,22 +87,18 @@ function createHTMLProductlist(products: Item[]) {
     itemContainer.appendChild(itemArticleNumber);
     itemContainer.appendChild(itemSize);
     itemContainer.appendChild(itemPrice);
-    //itemContainer.appendChild(itemSize);
     itemContainer.appendChild(addBtn);
-   // itemContainer.appendChild(anchorProductInfo);
-    //anchorProductInfo.appendChild(productInfoBtn);
+   
   }
-  console.log("createHTMLProductlist has been run" + JSON.stringify(products));
+  
 }
+
+//Displays the products in the DOM and createHTMLCartpage displays the added procucts in our cart
 
 createHTMLProductlist(products);
 createHTMLCartpage();
 
-
-
-
-
-
+//DOM-elements and their attributes for the sort-section
 
 let sortContainer: HTMLDivElement = (document.querySelector(".sort") as HTMLDivElement);
 let sortS: HTMLButtonElement = document.querySelector("#small") as HTMLButtonElement;
@@ -164,7 +114,10 @@ sortContainer.appendChild(sortM);
 sortContainer.appendChild(sortL);
 sortContainer.appendChild(sortAll);
 
+//Defines the chosen string-value that the sort-function down below depends on
 let selectedSize: string = "";
+
+//AddEventListener for each button with individual sorting-value
 
 sortS.addEventListener("click", () => {
   selectedSize = "S";
@@ -186,6 +139,8 @@ sortAll.addEventListener("click", () => {
   filterOptions(products);
 });
 
+//Sort-function for the products, i.e. paintings. A filtered array based on the string-value for the size-keys
+
 function filterOptions(products: Item[]) {
   let filtered = products.filter((paintings) => {
     return paintings.size === selectedSize;
@@ -203,6 +158,8 @@ function filterOptions(products: Item[]) {
   }
 }
 
+//Displays the user's chosen size-value in DOM
+
 function displaySelectedSize(filtered: Item[]) {
   let flexContainer = document.querySelector(
     ".flexContainer"
@@ -210,7 +167,7 @@ function displaySelectedSize(filtered: Item[]) {
   flexContainer.innerHTML = "";
 
   for (let i = 0; i < filtered.length; i++) {
-    //Creates the HTML elements we need:
+    //Creates the HTML elements we need in our DOM:
     let itemContainer = document.createElement("div") as HTMLDivElement;
     let itemImg = document.createElement("img") as HTMLImageElement;
     let itemTitle = document.createElement("h1") as HTMLHeadingElement;
@@ -220,7 +177,7 @@ function displaySelectedSize(filtered: Item[]) {
     let itemPrice = document.createElement("p") as HTMLParagraphElement;
     let addBtn = document.createElement("button") as HTMLButtonElement;
    
-    //Adds classes to the elements
+    //Adds classes to the DOM-elements
     itemContainer.classList.add("itemCard");
     itemImg.classList.add("itemCard__image");
     itemTitle.classList.add("itemCard__title");
@@ -234,19 +191,10 @@ function displaySelectedSize(filtered: Item[]) {
     //Eventlistener for adding to cart
     addBtn.addEventListener("click", () => {
       addToCart(filtered[i]);
-      //getLocalStorage();
-      
-     /* let count: HTMLButtonElement = document.getElementById(
-        "basketCount"
-      ) as HTMLButtonElement;
-      count.innerHTML = "" + cart.length;
-      createHTMLCartpage();
-      //createHTMLCartpage(cart);
-      */
-     totalCount(); //////////////Test för count
+      totalCount();
     });
 
-    //Adds content to the elements
+    //Adds content and atrributes to the DOM-elements
     itemImg.src = filtered[i].imageUrlLarge;
     itemImg.alt = "";
     itemTitle.innerText = filtered[i].title;
@@ -256,7 +204,6 @@ function displaySelectedSize(filtered: Item[]) {
       "Artikel nummer: " + filtered[i].articleNumber;
     itemSize.innerText = "Storlek: " + filtered[i].size;
     addBtn.innerHTML = "Köp";
-
     flexContainer.appendChild(itemContainer);
     itemContainer.appendChild(itemImg);
     itemContainer.appendChild(itemTitle);

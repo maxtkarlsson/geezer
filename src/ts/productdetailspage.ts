@@ -1,6 +1,6 @@
 import { products } from "./models/itemArray";
 import { Item } from "./models/item";
-//import { selectedItem } from "./productpage";
+
 
 export function createHTMLExtendedProductInfo(product: Item) {
   let cartContainer = document.querySelector(
