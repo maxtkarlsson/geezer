@@ -23,7 +23,6 @@
   color: white;
 }
 
-
 #brand-logo {
   display: flex;
   flex-direction: row;
@@ -60,6 +59,9 @@ nav {
 .nav-container-link:hover {
   color: white;
 }
+
+//Cart
+
 .cart-container {
   display: flex;
   width: 50vw;
@@ -72,6 +74,8 @@ nav {
   background-color: black;
   color: #ffbc2c;
   font-size: 20px;
+  border: none;
+  margin-right: 0.5em;
 }
 
 //Cart icon
@@ -79,6 +83,8 @@ nav {
   background-color: black;
   color: #ffbc2c;
   font-size: 30px;
+  border: none;
+  margin-right: 0.5em;
   &:hover {
     color: white;
   }
@@ -115,26 +121,6 @@ nav {
       padding-left: 10%;
       padding-right: 10%;
       border-bottom: none;
-
-      /*Ninas kod:
-        
-      border-bottom: 0px;
-      background-color: b.$ggrey;
-     
-
-      text-align: center;
-      width: 48vw;
-      height: 800px;
-      padding: 0;
-      //flex-flow: block;
-      //flex-wrap: wrap;
-      //flex-flow: column;
-      //@include b.FlexRowCenter;
-      //@include b.FlexColCenter;
-      display: inline-block;
-      flex-direction: row;
-      margin-top: 10px;
-      //justify-self: center;*/
     }
 
     &--small {
@@ -242,122 +228,10 @@ nav {
     }
   }
 }
-/*
-//Item cards
-.itemCard {
-  @include b.FlexColCenter;
-  margin-top: 2em;
-  padding: 1em;
-  border-bottom: 1px solid grey;
-  text-align: center;
-  flex-wrap: wrap;
-  
-  background-color: b.$ggrey;
-  @include b.for-size(desktop) {
-    border-bottom: 0px;
-    background-color: b.$ggrey;
-    text-align: center;
-    width: 48vw;
-    height: 800px;
-    padding:0;
-    //flex-flow: block;
-    flex-wrap: wrap;
-   //@include b.FlexRowCenter;
-   @include b.FlexColCenter;
-   display: inline-block;
-   //justify-self: center;
-   
-  }
 
-  &--small {
-    @include b.FlexRowCenter;
-    justify-content: space-between;
-    margin-top: 1em;
-  }
-
-  &__image {
-    @include b.FlexColCenter;
-    @include b.for-size(desktop) {
-      
-      //text-align: center;
-      align-self: center;
-      justify-self: center;
-      flex-wrap: wrap;
-      //@include b.FlexRowCenter;
-      //display: block;
-    }
-    
-    &--small {
-      height: 100px;
-      width: 100px;
-    }
-  }
-
-  &__title {
-    display: flex;
-    margin-top: 0.5em;
-    align-self: flex-start;
-    flex-wrap: wrap;
-    font-size: 1.5em;
-    text-align: center;
-    @include b.for-size(desktop) {
-      text-align: center;
-    }
-    
-
-    &--small {
-      font-size: 1em;
-      align-self: center;
-      margin-top: 0;
-      //background-color: blue;
-    }
-  }
-
-  &__articleNumber {
-    align-self: flex-end;
-    font-style: italic;
-  }
-
-  &__price {
-    font-size: 2em;
-    &--small {
-      align-self: center;
-      //background-color: burlywood;
-    }
-  }
-
-  &__size {
-    font-weight: bold;
-  }
-
-  &__quantity {
-    &--small {
-      //background-color: coral;
-    }
-  }
-
-  &__addBtn {
-    background-color: b.$ggreen;
-    font-size: 1.5em;
-    font-weight: bold;
-    border: none;
-    border-radius: 4px;
-    padding-top: 0.3em;
-    padding-bottom: 0.3em;
-    padding-right: 1em;
-    padding-left: 1em;
-
-    &:hover {
-      background-color: #d4eb72;
-    }
-  }
-}
-*/
+//Checkout form
 
 .formContainer {
-  //margin: 0;
-  //display: flex;
-  //flex-direction: column;
   @include b.FlexColCenter;
   @include b.for-size(desktop) {
     @include b.FlexColCenter;
@@ -416,7 +290,6 @@ nav {
   }
 
   &__image--small {
-    //margin-top: 20px;
     @include b.FlexColCenter;
     @include b.for-size(desktop) {
       @include b.FlexRowCenter;
@@ -450,7 +323,6 @@ nav {
   align-items: center;
 }
 
-
 .input__card--hidden {
   display: none;
 }
@@ -461,14 +333,11 @@ nav {
 
 .input__swish--hidden {
   display: none;
-
 }
 
 .input__swish--show {
   display: block;
 }
-
-
 
 // Styling for totalSum in cartPage
 .cartSum {
