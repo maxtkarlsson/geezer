@@ -128,6 +128,8 @@ container.appendChild(formContainer);
 
 payBtn.addEventListener("click", () => {
   window.location.replace("/pages/confirmationpage.html");
+  localStorage.clear();
+  
 });
 
 function createHTMLForm() {
