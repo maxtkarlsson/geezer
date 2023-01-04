@@ -301,40 +301,19 @@ nav {
 }
 
 #checkoutContainer {
-  @include b.FlexColCenter;
-  @include b.for-size(desktop) {
-    @include b.FlexRowCenter;
-  }
+  display: flex;
+  flex-direction: column;
 }
 
 .itemCardCheckout--small {
-  flex-basis: 100%;
-  margin-top: 20px;
-  @include b.for-size(desktop) {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 40px;
-  }
+  display: flex;
+  flex-direction: row;
 
-  &__image--small {
-    @include b.FlexColCenter;
-    @include b.for-size(desktop) {
-      @include b.FlexRowCenter;
-    }
-  }
-  &__title--small {
-    @include b.FlexRowCenter;
-  }
+  align-items: center;
+}
 
-  &__price--small {
-    @include b.FlexColCenter;
-  }
-
-  &__quantity--small {
-    @include b.FlexColCenter;
-  }
+.itemCardCheckout__title--small {
+  font-size: 1em;
 }
 
 //Footer
