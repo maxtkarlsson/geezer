@@ -21,8 +21,6 @@ function createHTMLConfirmationpage() {
     totalSum += cart[i].quantity * cart[i].cartItem.price;
   }
 
-  //let totalSumString:string = totalSum.toString;
-
   confirmationHeading.innerText = "Tack för ditt köp!";
   confirmationText.innerText =
     "Din order på " +
@@ -36,10 +34,6 @@ function createHTMLConfirmationpage() {
 
 createHTMLConfirmationpage();
 
-/*
+localStorage.clear();
 
-Tack för ditt köp!
 
-Din order på 32434kr är skickad och betalningen har genomförts.
-
-*/
