@@ -4,7 +4,6 @@ import { products } from "./models/itemArray";
 import { ShoppingCartItem } from "./models/ShoppingCartItem";
 import { createHTMLCartpage } from "./functions";
 
-
 getLocalStorage();
 totalCount();
 
@@ -56,14 +55,14 @@ function createHTMLProductlist(products: Item[]) {
     itemPrice.classList.add("itemCard__price");
     itemSize.classList.add("itemCard__size");
     addBtn.classList.add("itemCard__addBtn");
-  
+
     //Eventlistener for adding to cart
     addBtn.addEventListener("click", () => {
       addToCart(products[i]);
-      totalCount(); 
+      totalCount();
     });
 
-    //Adds attributes to the elements 
+    //Adds attributes to the elements
     itemImg.src = products[i].imageUrlLarge;
     itemImg.alt = "";
     itemTitle.innerText = products[i].title;
@@ -73,7 +72,6 @@ function createHTMLProductlist(products: Item[]) {
       "Artikel nummer: " + products[i].articleNumber;
     itemSize.innerText = "Storlek: " + products[i].size;
     addBtn.innerHTML = "Köp";
-
 
     //Sets the elements to the DOM
     let flexContainer = document.querySelector(
@@ -88,9 +86,7 @@ function createHTMLProductlist(products: Item[]) {
     itemContainer.appendChild(itemSize);
     itemContainer.appendChild(itemPrice);
     itemContainer.appendChild(addBtn);
-   
   }
-  
 }
 
 //Displays the products in the DOM and createHTMLCartpage displays the added procucts in our cart
@@ -100,11 +96,21 @@ createHTMLCartpage();
 
 //DOM-elements and their attributes for the sort-section
 
-let sortContainer: HTMLDivElement = (document.querySelector(".sort") as HTMLDivElement);
-let sortS: HTMLButtonElement = document.querySelector("#small") as HTMLButtonElement;
-let sortM: HTMLButtonElement = document.querySelector("#medium") as HTMLButtonElement;
-let sortL: HTMLButtonElement = document.querySelector("#large") as HTMLButtonElement;
-let sortAll: HTMLButtonElement = document.querySelector("#allitems") as HTMLButtonElement;
+let sortContainer: HTMLDivElement = document.querySelector(
+  ".sort"
+) as HTMLDivElement;
+let sortS: HTMLButtonElement = document.querySelector(
+  "#small"
+) as HTMLButtonElement;
+let sortM: HTMLButtonElement = document.querySelector(
+  "#medium"
+) as HTMLButtonElement;
+let sortL: HTMLButtonElement = document.querySelector(
+  "#large"
+) as HTMLButtonElement;
+let sortAll: HTMLButtonElement = document.querySelector(
+  "#allitems"
+) as HTMLButtonElement;
 sortS.innerHTML = "S";
 sortM.innerHTML = "M";
 sortL.innerHTML = "L";
@@ -148,12 +154,11 @@ function filterOptions(products: Item[]) {
 
   if (selectedSize === "Alla tavlor") {
     let flexContainer = document.querySelector(
-    ".flexContainer"
-  ) as HTMLDivElement;
-  flexContainer.innerHTML = "";
+      ".flexContainer"
+    ) as HTMLDivElement;
+    flexContainer.innerHTML = "";
     createHTMLProductlist(products);
-  }
-  else {
+  } else {
     displaySelectedSize(filtered);
   }
 }
@@ -176,7 +181,7 @@ function displaySelectedSize(filtered: Item[]) {
     let itemSize = document.createElement("p") as HTMLParagraphElement;
     let itemPrice = document.createElement("p") as HTMLParagraphElement;
     let addBtn = document.createElement("button") as HTMLButtonElement;
-   
+
     //Adds classes to the DOM-elements
     itemContainer.classList.add("itemCard");
     itemImg.classList.add("itemCard__image");
@@ -186,7 +191,6 @@ function displaySelectedSize(filtered: Item[]) {
     itemPrice.classList.add("itemCard__price");
     itemSize.classList.add("itemCard__size");
     addBtn.classList.add("itemCard__addBtn");
-    
 
     //Eventlistener for adding to cart
     addBtn.addEventListener("click", () => {
@@ -212,6 +216,5 @@ function displaySelectedSize(filtered: Item[]) {
     itemContainer.appendChild(itemSize);
     itemContainer.appendChild(itemPrice);
     itemContainer.appendChild(addBtn);
-
   }
 }

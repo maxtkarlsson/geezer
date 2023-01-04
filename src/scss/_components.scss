@@ -90,6 +90,42 @@ nav {
   }
 }
 
+//Cart layout
+.offcanvas-body {
+  .itemCard {
+    &--small {
+      @include b.FlexRowCenter;
+      align-items: center;
+
+      justify-content: flex-start;
+      border-bottom: 1px solid grey;
+    }
+    &__title--small {
+      font-size: 0.9em;
+      width: 25%;
+    }
+    &__increaseBtn {
+      width: 20px;
+      margin: 10px;
+    }
+    &__decreaseBtn {
+      width: 20px;
+      margin: 10px;
+    }
+    &__deleteBtn {
+      width: 20px;
+      margin: 10px;
+    }
+    &__image--small {
+      display: none;
+    }
+    &__price--small {
+      font-size: 0.9em;
+      width: 25%;
+    }
+  }
+}
+
 //Product item cards
 .flexContainer {
   @include b.FlexColCenter;
@@ -168,7 +204,6 @@ nav {
         font-size: 1em;
         align-self: center;
         margin-top: 0;
-        //background-color: blue;
       }
     }
 
@@ -199,12 +234,6 @@ nav {
 
     &__size {
       font-weight: bold;
-    }
-
-    &__quantity {
-      &--small {
-        //background-color: coral;
-      }
     }
 
     &__addBtn {

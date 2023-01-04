@@ -2,9 +2,6 @@ import { ShoppingCartItem } from "./models/ShoppingCartItem";
 import { Item } from "./models/item";
 import { products } from "./models/itemArray";
 
-
-
-
 function removeItem(product: ShoppingCartItem) {
   let cart: ShoppingCartItem[] = getLocalStorage();
   for (let i = 0; i < cart.length; i++) {
@@ -64,7 +61,6 @@ export function createHTMLCartpage() {
     });
 
     decreaseBtn.addEventListener("click", () => {
-      
       cart[i].quantity--;
 
       if (cart[i].quantity < 1) {
@@ -82,7 +78,6 @@ export function createHTMLCartpage() {
       totalCount();
     });
 
-
     //Adds content to the elements
     itemImg.src = cart[i].cartItem.imageUrl;
     itemImg.alt = "";
@@ -94,38 +89,35 @@ export function createHTMLCartpage() {
     deleteBtn.innerText = "X";
 
     //Adds elements to page
+    itemContainer.appendChild(deleteBtn);
     itemContainer.appendChild(itemImg);
     itemContainer.appendChild(itemTitle);
     itemContainer.appendChild(itemPrice);
     itemContainer.appendChild(itemQuantity);
     itemContainer.appendChild(decreaseBtn);
     itemContainer.appendChild(increaseBtn);
-    itemContainer.appendChild(deleteBtn);
+
     cartContainer.appendChild(itemContainer);
   }
   sumCart();
   createPurchaseBtn();
 }
 
-export function sumCart (){
-  let totalSum:number = 0;
+export function sumCart() {
+  let totalSum: number = 0;
   let cart: ShoppingCartItem[] = getLocalStorage();
-  
-  
-  let cartSum = document.createElement("p")as HTMLParagraphElement;
+
+  let cartSum = document.createElement("p") as HTMLParagraphElement;
   let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;
-  for (let i=0;i<cart.length;i++){
-    
+  for (let i = 0; i < cart.length; i++) {
     totalSum += cart[i].cartItem.price * cart[i].quantity;
     cartSum.innerHTML = "Totalt:" + totalSum.toString() + "kr";
     cartBody.appendChild(cartSum);
     localStorage.setItem("cart", JSON.stringify(cart) || "[]");
-    
   }
-  
 }
 
-function createPurchaseBtn () {
+function createPurchaseBtn() {
   let purchaseBtn = document.createElement("button") as HTMLButtonElement;
   purchaseBtn.classList.add("purchaseBtn");
   purchaseBtn.innerHTML = "Till betalning";
@@ -137,22 +129,17 @@ function createPurchaseBtn () {
   });
 }
 
-export function totalCount () {
+export function totalCount() {
   let count: HTMLButtonElement = document.getElementById(
     "basketCount"
   ) as HTMLButtonElement;
   let cart: ShoppingCartItem[] = getLocalStorage();
-  let totalQuantity:number=0;
-  for(let i=0;i<cart.length;i++) {
+  let totalQuantity: number = 0;
+  for (let i = 0; i < cart.length; i++) {
     totalQuantity += cart[i].quantity;
   }
   count.innerHTML = "" + totalQuantity;
   createHTMLCartpage();
   localStorage.setItem("cart", JSON.stringify(cart) || "[]");
   return totalQuantity;
-
 }
-
-
-
-
