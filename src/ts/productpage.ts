@@ -7,7 +7,7 @@ import { createHTMLCartpage } from "./functions";
 import { createHTMLExtendedProductInfo } from "./productdetailspage";
 
 getLocalStorage();
-
+totalCount();
 //let cartFromLS: ShoppingCartItem[] = [];
 
 //När vi pushar saker i listan
