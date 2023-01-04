@@ -305,15 +305,39 @@ nav {
   flex-direction: column;
 }
 
-.itemCardCheckout--small {
-  display: flex;
-  flex-direction: row;
-
-  align-items: center;
+.itemCardCheckout {
+  &--small {
+    width: -webkit-fill-available;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 30%;
+    margin-right: 30%;
+  }
 }
 
-.itemCardCheckout__title--small {
-  font-size: 1em;
+.itemCardCheckout {
+  &__title {
+    &--small {
+      width: 20%;
+      text-align: left;
+      margin-left: 10%;
+      font-size: 1em;
+    }
+  }
+  &__price {
+    &--small {
+      text-align: right;
+      width: 20%;
+    }
+  }
+  &__quantity {
+    &--small {
+      width: 20%;
+      margin-left: 10%;
+    }
+  }
 }
 
 //Footer
