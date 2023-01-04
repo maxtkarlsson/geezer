@@ -109,9 +109,10 @@ export function sumCart() {
 
   let cartSum = document.createElement("p") as HTMLParagraphElement;
   let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;
+  cartSum.classList.add("cartSum");
   for (let i = 0; i < cart.length; i++) {
     totalSum += cart[i].cartItem.price * cart[i].quantity;
-    cartSum.innerHTML = "Totalt:" + totalSum.toString() + "kr";
+    cartSum.innerHTML = "Totalt: " + totalSum.toString() + "kr";
     cartBody.appendChild(cartSum);
     localStorage.setItem("cart", JSON.stringify(cart) || "[]");
   }

@@ -300,6 +300,7 @@ nav {
   }
 }
 
+//Checkout list
 #checkoutContainer {
   display: flex;
   flex-direction: column;
@@ -312,8 +313,12 @@ nav {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 5%;
+    margin-right: 5%;
+    @include b.for-size(desktop) {
+      margin-left: 30%;
+      margin-right: 30%;
+    }
   }
 }
 
@@ -323,19 +328,31 @@ nav {
       width: 20%;
       text-align: left;
       margin-left: 10%;
-      font-size: 1em;
+      font-size: 0.8em;
+      @include b.for-size(desktop) {
+        width: 20%;
+        text-align: left;
+        margin-left: 10%;
+        font-size: 1em;
+      }
     }
   }
   &__price {
     &--small {
+      font-size: 0.8em;
       text-align: right;
       width: 20%;
     }
   }
   &__quantity {
     &--small {
-      width: 20%;
+      font-size: 0.8em;
+      width: 15%;
       margin-left: 10%;
+      @include b.for-size(desktop) {
+        width: 20%;
+        margin-left: 10%;
+      }
     }
   }
 }
