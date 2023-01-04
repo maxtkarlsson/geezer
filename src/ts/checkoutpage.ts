@@ -47,10 +47,11 @@ export function sumCart() {
   console.log("sumcart has been run");
 
   let cartSum = document.createElement("p") as HTMLParagraphElement;
+  cartSum.classList.add("cartSum");
   container.appendChild(cartSum);
   for (let i = 0; i < cart.length; i++) {
     totalSum += cart[i].cartItem.price * cart[i].quantity;
-    cartSum.innerHTML = "Totalt:" + totalSum.toString() + "kr";
+    cartSum.innerHTML = "Totalt: " + totalSum.toString() + "kr";
     container.appendChild(cartSum);
     localStorage.setItem("cart", JSON.stringify(cart) || "[]");
     cart;
