@@ -408,7 +408,10 @@ nav {
   flex-basis: 100%;
   margin-top: 20px;
   @include b.for-size(desktop) {
-    @include b.FlexColCenter;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
     margin-top: 40px;
   }
 
@@ -463,4 +466,11 @@ nav {
 
 .input__swish--show {
   display: block;
+}
+
+
+
+// Styling for totalSum in cartPage
+.cartSum {
+  font-weight: bolder;
 }
