@@ -38,13 +38,14 @@ function createHTMLPurchasedItems() {
     container.appendChild(itemContainer);
     
   }
+
   sumCart(); 
 }
 
 export function sumCart() {
   let totalSum: number = 0;
   let cart: ShoppingCartItem[] = getLocalStorage();
-  console.log("sumcart has been run");
+  
 
   let cartSum = document.createElement("p") as HTMLParagraphElement;
   container.appendChild(cartSum);
@@ -56,7 +57,7 @@ export function sumCart() {
     cart;
   }
   
-  console.log(totalSum);
+  
 }
 
 createHTMLPurchasedItems();

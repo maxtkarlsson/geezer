@@ -36,6 +36,6 @@ export function createHTMLExtendedProductInfo(product: Item) {
     itemContainer.appendChild(itemQuantity);
     cartContainer.appendChild(itemContainer);
 
-    console.log(products[i]);
+  
   }
 }

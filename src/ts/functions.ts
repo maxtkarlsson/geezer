@@ -13,7 +13,6 @@ function removeItem(product: ShoppingCartItem) {
     }
   }
   localStorage.setItem("cart", JSON.stringify(cart));
-  console.log("Function removeItem run.");
 }
 
 export function getLocalStorage(): ShoppingCartItem[] {
@@ -65,7 +64,7 @@ export function createHTMLCartpage() {
     });
 
     decreaseBtn.addEventListener("click", () => {
-      console.log("decreaseBtn clicked.");
+      
       cart[i].quantity--;
 
       if (cart[i].quantity < 1) {
@@ -111,11 +110,12 @@ export function createHTMLCartpage() {
 export function sumCart (){
   let totalSum:number = 0;
   let cart: ShoppingCartItem[] = getLocalStorage();
-  console.log("sumcart has been run");
+  
   
   let cartSum = document.createElement("p")as HTMLParagraphElement;
   let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;
   for (let i=0;i<cart.length;i++){
+    
     totalSum += cart[i].cartItem.price * cart[i].quantity;
     cartSum.innerHTML = "Totalt:" + totalSum.toString() + "kr";
     cartBody.appendChild(cartSum);
@@ -123,7 +123,6 @@ export function sumCart (){
     
   }
   
-  console.log(totalSum);
 }
 
 function createPurchaseBtn () {
@@ -149,11 +148,9 @@ export function totalCount () {
   }
   count.innerHTML = "" + totalQuantity;
   createHTMLCartpage();
-  console.log(totalQuantity);
   localStorage.setItem("cart", JSON.stringify(cart) || "[]");
   return totalQuantity;
 
-  
 }
 
 

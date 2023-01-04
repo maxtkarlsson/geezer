@@ -213,6 +213,5 @@ function displaySelectedSize(filtered: Item[]) {
     itemContainer.appendChild(itemPrice);
     itemContainer.appendChild(addBtn);
 
-
   }
 }
