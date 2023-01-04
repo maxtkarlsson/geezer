@@ -168,14 +168,11 @@ nav {
     &__image {
       @include b.FlexColCenter;
       @include b.for-size(desktop) {
-        //text-align: center;
         align-self: center;
         justify-self: center;
         flex-wrap: wrap;
         margin: auto;
         display: block;
-        //@include b.FlexRowCenter;
-        //display: block;
       }
 
       &--small {
@@ -228,7 +225,6 @@ nav {
       font-size: 2em;
       &--small {
         align-self: center;
-        //background-color: burlywood;
       }
     }
 
@@ -391,4 +387,63 @@ nav {
 // Styling for totalSum in cartPage
 .cartSum {
   font-weight: bolder;
+}
+
+.sort {
+  @include b.FlexColCenter;
+
+  background-color: b.$gblueblack;
+  color: white;
+  @include b.for-size(desktop) {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    color: white;
+    background-color: b.$gblueblack;
+    font-family: "Inter";
+    margin-right: 2vw;
+    margin-top: 20px;
+  }
+
+  &__heading {
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-right: 2px;
+    //opacity: ;
+  }
+
+  &__option {
+    font-family: "Inter";
+    font-size: 1rem;
+    font-weight: bolder;
+    border: none;
+    border-radius: 4px;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    padding-right: 1em;
+    padding-left: 1em;
+    align-self: center;
+    margin-bottom: 3px;
+    color: b.$gblack;
+    -webkit-font-smoothing: antialiased;
+    margin-left: 3px;
+    width: 107px;
+    background-color: transparent;
+    color: white;
+    @include b.for-size(desktop) {
+    }
+  }
+  &__option:active {
+    text-decoration: underline;
+    text-decoration-color: white;
+  }
+  &__option:visited {
+    text-decoration: underline;
+    text-decoration-color: white;
+  }
+}
+//test active click - underline
+button::after {
+  text-decoration: underline;
+  text-decoration-color: white;
 }

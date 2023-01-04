@@ -1,9 +1,7 @@
 import { ShoppingCartItem } from "./models/ShoppingCartItem";
 import { getLocalStorage } from "./functions";
 
-
 let container = document.querySelector(".flexContainer") as HTMLDivElement;
-
 
 function createHTMLPurchasedItems() {
   let cart: ShoppingCartItem[] = getLocalStorage();
@@ -24,7 +22,7 @@ function createHTMLPurchasedItems() {
 
     //Adds content to the elements
     itemImg.src = cart[i].cartItem.imageUrl;
-    itemImg.alt = "";
+    itemImg.alt = cart[i].cartItem.imageAlt;
     itemTitle.innerText = cart[i].cartItem.title;
     itemPrice.innerText = cart[i].cartItem.price.toString() + " kr";
     itemQuantity.innerText = "Antal: " + cart[i].quantity.toString();
@@ -36,16 +34,14 @@ function createHTMLPurchasedItems() {
     itemContainer.appendChild(itemQuantity);
 
     container.appendChild(itemContainer);
-    
   }
 
-  sumCart(); 
+  sumCart();
 }
 
 export function sumCart() {
   let totalSum: number = 0;
   let cart: ShoppingCartItem[] = getLocalStorage();
-  
 
   let cartSum = document.createElement("p") as HTMLParagraphElement;
   cartSum.classList.add("cartSum");
@@ -57,11 +53,9 @@ export function sumCart() {
     localStorage.setItem("cart", JSON.stringify(cart) || "[]");
     cart;
   }
-  
 }
 
 createHTMLPurchasedItems();
-
 
 let formContainer = document.createElement("div") as HTMLDivElement;
 
@@ -109,7 +103,6 @@ payBtn.classList.add("formContainer__payBtn");
 cardInput.classList.add("input__card--hidden");
 swishInput.classList.add("input__swish--hidden");
 
-
 form.appendChild(firstnameInput);
 form.appendChild(lastnameInput);
 form.appendChild(phoneInput);
@@ -125,7 +118,6 @@ container.appendChild(formContainer);
 
 payBtn.addEventListener("click", () => {
   window.location.replace("/pages/confirmationpage.html");
-  
 });
 
 function createHTMLForm() {

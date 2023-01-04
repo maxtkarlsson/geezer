@@ -4,6 +4,7 @@ export class Item {
     public title: string,
     public imageUrl: string,
     public imageUrlLarge: string,
+    public imageAlt: string,
     public desc: string,
     public descLong: string,
     public price: number,

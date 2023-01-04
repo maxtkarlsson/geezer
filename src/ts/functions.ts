@@ -80,7 +80,7 @@ export function createHTMLCartpage() {
 
     //Adds content to the elements
     itemImg.src = cart[i].cartItem.imageUrl;
-    itemImg.alt = "";
+    itemImg.alt = cart[i].cartItem.imageAlt;
     itemTitle.innerText = cart[i].cartItem.title;
     itemPrice.innerText = cart[i].cartItem.price.toString() + " kr";
     itemQuantity.innerText = "Antal: " + cart[i].quantity.toString();

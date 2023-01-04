@@ -64,7 +64,7 @@ function createHTMLProductlist(products: Item[]) {
 
     //Adds attributes to the elements
     itemImg.src = products[i].imageUrlLarge;
-    itemImg.alt = "";
+    itemImg.alt = products[i].imageAlt;
     itemTitle.innerText = products[i].title;
     itemDesc.innerText = products[i].desc;
     itemPrice.innerText = products[i].price.toString() + " kr";
