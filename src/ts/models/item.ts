@@ -14,4 +14,3 @@ export class Item {
     public quantity: number
   ) {}
 }
-

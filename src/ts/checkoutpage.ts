@@ -58,7 +58,6 @@ export function sumCart() {
     cart;
   }
   
-  
 }
 
 createHTMLPurchasedItems();
