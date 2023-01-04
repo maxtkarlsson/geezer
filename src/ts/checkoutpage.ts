@@ -61,7 +61,6 @@ export function sumCart() {
 
 createHTMLPurchasedItems();
 
-//////////////////
 
 let formContainer = document.createElement("div") as HTMLDivElement;
 
@@ -109,7 +108,7 @@ payBtn.classList.add("formContainer__payBtn");
 cardInput.classList.add("input__card--hidden");
 swishInput.classList.add("input__swish--hidden");
 
-//anchorConfirmationPage.appendChild(payBtn);
+
 form.appendChild(firstnameInput);
 form.appendChild(lastnameInput);
 form.appendChild(phoneInput);
@@ -118,7 +117,6 @@ paymentContainer.appendChild(cardRadio);
 paymentContainer.appendChild(payWithCard);
 paymentContainer.appendChild(swishRadio);
 paymentContainer.appendChild(payWithSwish);
-//form.appendChild(payWithSwish)
 
 container.appendChild(form);
 formContainer.appendChild(payBtn);
@@ -126,7 +124,6 @@ container.appendChild(formContainer);
 
 payBtn.addEventListener("click", () => {
   window.location.replace("/pages/confirmationpage.html");
-  localStorage.clear();
   
 });
 

@@ -1,9 +1,9 @@
 import { ShoppingCartItem } from "./models/ShoppingCartItem";
 import { Item } from "./models/item";
 import { products } from "./models/itemArray";
-//age";
 
-//let cartFromLS: ShoppingCartItem[] = [];
+
+
 
 function removeItem(product: ShoppingCartItem) {
   let cart: ShoppingCartItem[] = getLocalStorage();
@@ -45,11 +45,6 @@ export function createHTMLCartpage() {
     let increaseBtn = document.createElement("button") as HTMLButtonElement;
     let decreaseBtn = document.createElement("button") as HTMLButtonElement;
     let deleteBtn = document.createElement("button") as HTMLButtonElement;
-/*
-    let purchaseBtn = document.createElement("button") as HTMLButtonElement; /////
-    let cartBody = document.querySelector(".offcanvas-body") as HTMLDivElement;///////
-
-*/
 
     //Adds classes to the elements:
     itemContainer.classList.add("itemCard--small");
@@ -60,14 +55,13 @@ export function createHTMLCartpage() {
     increaseBtn.classList.add("itemCard__increaseBtn");
     decreaseBtn.classList.add("itemCard__decreaseBtn");
     deleteBtn.classList.add("itemCard__deleteBtn");
-    //purchaseBtn.classList.add("purchaseBtn"); //////
 
     //Adds eventlistener to buttons
     increaseBtn.addEventListener("click", () => {
       cart[i].quantity++;
       localStorage.setItem("cart", JSON.stringify(cart) || "[]");
       createHTMLCartpage();
-      totalCount(); //////////Test för totalCount
+      totalCount();
     });
 
     decreaseBtn.addEventListener("click", () => {
@@ -80,8 +74,6 @@ export function createHTMLCartpage() {
       localStorage.setItem("cart", JSON.stringify(cart) || "[]");
       totalCount();
 
-      //decreaseQuantity(cart[i]);
-      //getLocalStorage(); //setta local
       createHTMLCartpage();
     });
 
@@ -91,9 +83,6 @@ export function createHTMLCartpage() {
       totalCount();
     });
 
-   /* purchaseBtn.addEventListener("click", () => {
-      window.location.replace("/pages/checkoutpage.html");
-    });*/
 
     //Adds content to the elements
     itemImg.src = cart[i].cartItem.imageUrl;
@@ -104,7 +93,6 @@ export function createHTMLCartpage() {
     increaseBtn.innerText = "+";
     decreaseBtn.innerText = "-";
     deleteBtn.innerText = "X";
-   // purchaseBtn.innerHTML = "Till betalning"; /////
 
     //Adds elements to page
     itemContainer.appendChild(itemImg);
@@ -115,9 +103,8 @@ export function createHTMLCartpage() {
     itemContainer.appendChild(increaseBtn);
     itemContainer.appendChild(deleteBtn);
     cartContainer.appendChild(itemContainer);
-   // cartBody.appendChild(purchaseBtn); ///////
   }
-  sumCart(); ///////////////////Ska denna verkligen vara här?? Tar inte ändringar om flera i quntity eller delete i cart
+  sumCart();
   createPurchaseBtn();
 }
 
@@ -135,7 +122,7 @@ export function sumCart (){
     localStorage.setItem("cart", JSON.stringify(cart) || "[]");
     
   }
-  //return sumCart;
+  
   console.log(totalSum);
 }
 
@@ -166,7 +153,6 @@ export function totalCount () {
   localStorage.setItem("cart", JSON.stringify(cart) || "[]");
   return totalQuantity;
 
-  //createHTMLCartpage(cart);
   
 }
 
