@@ -37,3 +37,21 @@ img {
     }
   }
 }
+
+//Confirmation page layout
+
+.confirmation {
+  @include b.FlexColCenter;
+  height: 90vh;
+  padding: 5%;
+  color: black;
+  &__header {
+    text-align: center;
+  }
+  &__text {
+    text-align: center;
+  }
+  @include b.for-size(desktop) {
+    color: white;
+  }
+}
