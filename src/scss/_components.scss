@@ -311,6 +311,7 @@ nav {
     align-items: center;
     margin-left: 5%;
     margin-right: 5%;
+    margin-top: 2em;
     @include b.for-size(desktop) {
       margin-left: 30%;
       margin-right: 30%;
